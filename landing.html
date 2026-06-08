@@ -67,9 +67,9 @@ body::before {
   pointer-events: none; z-index: 0;
 }
 
-/* ═══════════════════════════════════════════
+/* 
    NAV
-═══════════════════════════════════════════ */
+ */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
@@ -119,9 +119,9 @@ nav {
   transform: translateY(-1px);
 }
 
-/* ═══════════════════════════════════════════
+/* 
    HERO
-═══════════════════════════════════════════ */
+ */
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column;
@@ -286,7 +286,7 @@ nav {
 }
 .stat-divider { width: 1px; height: 40px; background: rgba(240,112,32,.15); }
 
-/* ── Demo card ── */
+/* Demo card */
 .hero-demo {
   margin-top: 4rem; width: 100%; max-width: 680px;
   animation: fadeUp .8s .5s ease both;
@@ -347,9 +347,9 @@ nav {
   color: var(--amber); opacity: .65;
 }
 
-/* ═══════════════════════════════════════════
+/* 
    SECTIONS GÉNÉRALES
-═══════════════════════════════════════════ */
+ */
 section { padding: 6rem 2rem; position: relative; z-index: 1; }
 .container { max-width: 1100px; margin: 0 auto; }
 
@@ -372,9 +372,9 @@ section { padding: 6rem 2rem; position: relative; z-index: 1; }
 }
 .section-sub { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.7; }
 
-/* ═══════════════════════════════════════════
+/* 
    COMMENT ÇA MARCHE
-═══════════════════════════════════════════ */
+ */
 .how-section { background: var(--warm); }
 .how-section::before {
   content: '';
@@ -417,9 +417,9 @@ section { padding: 6rem 2rem; position: relative; z-index: 1; }
 }
 .step-desc { font-size: .88rem; color: var(--muted); line-height: 1.65; }
 
-/* ═══════════════════════════════════════════
+/* 
    AVANT / APRÈS
-═══════════════════════════════════════════ */
+ */
 .compare-section { background: var(--cream); }
 .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
 .compare-card {
@@ -462,9 +462,9 @@ section { padding: 6rem 2rem; position: relative; z-index: 1; }
 .compare-card.bad .compare-result::before { background: #e05050; box-shadow: 0 0 6px rgba(220,60,60,.4); }
 .compare-card.good .compare-result::before { background: var(--amber); box-shadow: 0 0 8px rgba(240,112,32,.5); }
 
-/* ═══════════════════════════════════════════
-   FONCTIONNALITÉS — fond ink (noir profond)
-═══════════════════════════════════════════ */
+/* 
+   FONCTIONNALITÉS - fond ink (noir profond)
+ */
 .features-section {
   background: #090704;
   position: relative; overflow: hidden;
@@ -514,9 +514,9 @@ section { padding: 6rem 2rem; position: relative; z-index: 1; }
 }
 .feature-desc { font-size: .85rem; color: var(--muted); line-height: 1.65; }
 
-/* ═══════════════════════════════════════════
+/* 
    PRICING
-═══════════════════════════════════════════ */
+ */
 .pricing-section { background: var(--warm); }
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; align-items: start; }
 .pricing-card {
@@ -618,9 +618,9 @@ section { padding: 6rem 2rem; position: relative; z-index: 1; }
   transform: translateY(-1px);
 }
 
-/* ═══════════════════════════════════════════
+/* 
    TÉMOIGNAGES
-═══════════════════════════════════════════ */
+ */
 .testimonials-section { background: var(--cream); }
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
 .testimonial-card {
@@ -664,9 +664,9 @@ section { padding: 6rem 2rem; position: relative; z-index: 1; }
   text-shadow: 0 0 10px rgba(245,166,35,.5);
 }
 
-/* ═══════════════════════════════════════════
+/* 
    CTA FINAL
-═══════════════════════════════════════════ */
+ */
 .cta-section {
   background: #090704; text-align: center; padding: 8rem 2rem;
   position: relative; overflow: hidden;
@@ -694,9 +694,9 @@ section { padding: 6rem 2rem; position: relative; z-index: 1; }
   margin-top: 1.2rem;
 }
 
-/* ═══════════════════════════════════════════
+/* 
    FOOTER
-═══════════════════════════════════════════ */
+ */
 footer {
   background: #040302;
   color: rgba(245,237,224,.3);
@@ -717,16 +717,16 @@ footer {
 .footer-links a:hover { color: var(--amber); }
 .footer-copy { font-size: .75rem; }
 
-/* ═══════════════════════════════════════════
+/* 
    AUTEUR
-═══════════════════════════════════════════ */
+ */
 .author-section {
   background: var(--warm);
   padding: 0 2rem 5rem;
   position: relative; z-index: 1;
 }
 
-/* ── Terminal header bar ── */
+/*  Terminal header bar  */
 .author-terminal-header {
   max-width: 1100px; margin: 0 auto;
   background: #0a0704;
@@ -748,7 +748,7 @@ footer {
   letter-spacing: .06em; margin-left: .6rem;
 }
 
-/* ── Carte intérieure (corps du terminal) ── */
+/*  Carte intérieure (corps du terminal)  */
 .author-inner {
   max-width: 1100px; margin: 0 auto;
   background: var(--card);
@@ -771,7 +771,7 @@ footer {
   border-radius: 50%; pointer-events: none;
 }
 
-/* ── Avatar ── */
+/* Avatar  */
 .author-left {
   display: flex; flex-direction: column;
   align-items: center; gap: 1.5rem;
@@ -825,7 +825,7 @@ footer {
   box-shadow: 0 0 10px rgba(240,112,32,.2);
 }
 
-/* ── Bio ── */
+/*  Bio */
 .author-right { position: relative; z-index: 1; }
 .author-prompt-line {
   display: flex; align-items: center; gap: .6rem;
