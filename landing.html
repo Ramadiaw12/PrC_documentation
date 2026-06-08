@@ -12,27 +12,27 @@
 ═══════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  /* ── Fonds sombres chauds ── */
-  --ink:        #f5ede0;            /* texte principal — blanc cassé chaud */
-  --cream:      #0e0b08;            /* fond principal — noir chaud profond */
-  --warm:       #161008;            /* fond secondaire — brun-noir */
-  --card:       #1a1209;            /* cartes — brun-noir éclairé */
+  /*  Fonds sombres chauds  */
+  --ink:        #f5ede0;            /* texte principal blanc cassé chaud */
+  --cream:      #0e0b08;            /* fond principal noir chaud profond */
+  --warm:       #161008;            /* fond secondaire brun-noir */
+  --card:       #1a1209;            /* cartes brun-noir éclairé */
 
-  /* ── Amber brillant ── */
+  /* Amber brillant */
   --amber:      #f07020;            /* orange amber vif */
   --amber-dk:   #c45510;            /* amber foncé hover */
   --amber-lt:   rgba(240,112,32,.09); /* fond amber teinté */
   --gold:       #f5a623;            /* or chaud */
   --gold-lt:    rgba(245,166,35,.08);
 
-  /* ── Autres accents ── */
+  /* Autres accents */
   --teal:       #1ab8b8;
   --blue:       #5b9bd5;
-  --muted:      #8a7a68;            /* texte secondaire — brun clair */
+  --muted:      #8a7a68;            /* texte secondaire brun clair */
   --border:     rgba(240,112,32,.14);
   --border-sub: rgba(245,166,35,.08);
 
-  /* ── Shadows & glows ── */
+  /* Shadows & glows */
   --shadow:     0 4px 24px rgba(0,0,0,.55);
   --shadow-lg:  0 16px 64px rgba(0,0,0,.75);
   --glow:       0 0 32px rgba(240,112,32,.18);
@@ -50,7 +50,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Grain overlay ── */
+/* Grain overlay */
 body::after {
   content: '';
   position: fixed; inset: 0;
@@ -58,7 +58,7 @@ body::after {
   pointer-events: none; z-index: 9999;
 }
 
-/* ── Grille de points subtile amber ── */
+/* Grille de points subtile amber */
 body::before {
   content: '';
   position: fixed; inset: 0;
