@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PromptCraft — Transformez vos idées en prompts parfaits</title>
+<meta name="description" content="PromptCraft génère des prompts structurés et professionnels en 3 secondes. Fini les résultats médiocres avec l'IA.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   RESET & ROOT — DARK AMBER BRILLIANT
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  /* ── Fonds sombres chauds ── */
+  --ink:        #f5ede0;            /* texte principal — blanc cassé chaud */
+  --cream:      #0e0b08;            /* fond principal — noir chaud profond */
+  --warm:       #161008;            /* fond secondaire — brun-noir */
+  --card:       #1a1209;            /* cartes — brun-noir éclairé */
+
+  /* ── Amber brillant ── */
+  --amber:      #f07020;            /* orange amber vif */
+  --amber-dk:   #c45510;            /* amber foncé hover */
+  --amber-lt:   rgba(240,112,32,.09); /* fond amber teinté */
+  --gold:       #f5a623;            /* or chaud */
+  --gold-lt:    rgba(245,166,35,.08);
+
+  /* ── Autres accents ── */
+  --teal:       #1ab8b8;
+  --blue:       #5b9bd5;
+  --muted:      #8a7a68;            /* texte secondaire — brun clair */
+  --border:     rgba(240,112,32,.14);
+  --border-sub: rgba(245,166,35,.08);
+
+  /* ── Shadows & glows ── */
+  --shadow:     0 4px 24px rgba(0,0,0,.55);
+  --shadow-lg:  0 16px 64px rgba(0,0,0,.75);
+  --glow:       0 0 32px rgba(240,112,32,.18);
+  --glow-lg:    0 0 64px rgba(240,112,32,.28);
+  --glow-gold:  0 0 24px rgba(245,166,35,.25);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Grain overlay ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999;
+}
+
+/* ── Grille de points subtile amber ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: radial-gradient(rgba(240,112,32,.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(14,11,8,.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(240,112,32,.12);
+  box-shadow: 0 1px 0 rgba(245,166,35,.06);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 900;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: .5rem;
+}
+.nav-logo .badge {
+  font-family: 'DM Mono', monospace;
+  font-size: .55rem; letter-spacing: .12em; text-transform: uppercase;
+  background: linear-gradient(135deg, var(--amber), var(--gold));
+  color: #0e0b08;
+  padding: .25em .6em; border-radius: 100px;
+  box-shadow: 0 0 14px rgba(240,112,32,.45);
+  font-weight: 700;
+}
+
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a {
+  font-size: .85rem; color: var(--muted); text-decoration: none;
+  transition: color .18s; font-weight: 500;
+}
+.nav-links a:hover { color: var(--amber); }
+
+.nav-cta {
+  background: transparent;
+  border: 1.5px solid var(--amber);
+  color: var(--amber);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: .85rem; font-weight: 700;
+  padding: .55em 1.4em; border-radius: 100px;
+  text-decoration: none; transition: all .2s;
+  box-shadow: 0 0 16px rgba(240,112,32,.18);
+}
+.nav-cta:hover {
+  background: var(--amber); color: #0e0b08;
+  box-shadow: 0 0 28px rgba(240,112,32,.5);
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 8rem 2rem 5rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+
+/* Grand halo amber central */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 800px; height: 800px;
+  background: radial-gradient(circle,
+    rgba(240,112,32,.1) 0%,
+    rgba(245,166,35,.06) 35%,
+    transparent 65%);
+  top: 0%; left: 50%; transform: translateX(-50%);
+  border-radius: 50%;
+  animation: pulse 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Orbe gold en coin bas droit */
+.hero-orb {
+  position: absolute;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(245,166,35,.1) 0%, transparent 70%);
+  bottom: 5%; right: 0%;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+}
+/* Orbe amber gauche */
+.hero-orb2 {
+  position: absolute;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(240,112,32,.07) 0%, transparent 70%);
+  top: 20%; left: -5%;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: .7; }
+  50% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 1.2rem;
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  animation: fadeUp .8s ease both;
+  position: relative; z-index: 1;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; width: 32px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber)); opacity: .55;
+}
+.hero-eyebrow::after {
+  background: linear-gradient(90deg, var(--amber), transparent);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900; line-height: 1.08;
+  color: var(--ink); margin-bottom: 1.5rem;
+  max-width: 900px;
+  animation: fadeUp .8s .1s ease both;
+  position: relative; z-index: 1;
+}
+.hero h1 em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 60%, #ffd080 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 22px rgba(240,112,32,.4));
+  position: relative;
+}
+
+.hero-sub {
+  font-size: 1.15rem; color: var(--muted);
+  max-width: 560px; margin: 0 auto 2.5rem;
+  line-height: 1.7;
+  animation: fadeUp .8s .2s ease both;
+  position: relative; z-index: 1;
+}
+
+.hero-ctas {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; flex-wrap: wrap;
+  animation: fadeUp .8s .3s ease both;
+  position: relative; z-index: 1;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: .6rem;
+  background: linear-gradient(135deg, var(--amber) 0%, #d06010 100%);
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem; font-weight: 700;
+  padding: .85em 2em; border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(240,112,32,.45), 0 0 0 1px rgba(240,112,32,.25);
+  transition: all .22s;
+  position: relative; overflow: hidden;
+}
+/* reflet interne */
+.btn-primary::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,.15), transparent);
+  border-radius: inherit; pointer-events: none;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ff8030 0%, var(--amber) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(240,112,32,.6), 0 0 0 1px rgba(240,112,32,.4);
+}
+.btn-primary svg { width: 18px; height: 18px; position: relative; z-index: 1; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: transparent; color: var(--ink);
+  font-size: .95rem; font-weight: 600;
+  padding: .85em 1.8em; border-radius: 100px;
+  text-decoration: none;
+  border: 1.5px solid rgba(240,112,32,.2);
+  transition: all .22s;
+}
+.btn-secondary:hover {
+  border-color: rgba(240,112,32,.5);
+  background: var(--amber-lt);
+  color: var(--amber);
+}
+
+.hero-stats {
+  display: flex; align-items: center; gap: 2rem;
+  margin-top: 3.5rem; flex-wrap: wrap; justify-content: center;
+  animation: fadeUp .8s .4s ease both;
+  position: relative; z-index: 1;
+}
+.stat { display: flex; flex-direction: column; align-items: center; gap: .2rem; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 900; color: var(--ink);
+}
+.stat-num span { color: var(--amber); text-shadow: 0 0 12px rgba(240,112,32,.4); }
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted);
+}
+.stat-divider { width: 1px; height: 40px; background: rgba(240,112,32,.15); }
+
+/* ── Demo card ── */
+.hero-demo {
+  margin-top: 4rem; width: 100%; max-width: 680px;
+  animation: fadeUp .8s .5s ease both;
+  position: relative; z-index: 1;
+}
+.demo-card {
+  background: var(--card);
+  border: 1px solid rgba(240,112,32,.2);
+  border-radius: 20px; padding: 1.5rem;
+  box-shadow: var(--shadow-lg), var(--glow);
+  text-align: left; position: relative; overflow: hidden;
+}
+/* barre top brillante */
+.demo-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--gold), var(--amber));
+  box-shadow: 0 0 16px rgba(245,166,35,.7);
+}
+/* reflet interne haut */
+.demo-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 55%;
+  background: linear-gradient(180deg, rgba(240,112,32,.04) 0%, transparent 100%);
+  border-radius: 20px 20px 0 0; pointer-events: none;
+}
+
+.demo-input {
+  background: rgba(240,112,32,.05);
+  border: 1.5px solid rgba(240,112,32,.12);
+  border-radius: 12px; padding: 1rem 1.2rem;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .9rem;
+  color: var(--muted); margin-bottom: 1rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.demo-label {
+  font-family: 'DM Mono', monospace; font-size: .6rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: .6rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.demo-label::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 8px rgba(240,112,32,.7);
+}
+.demo-result {
+  background: rgba(0,0,0,.5);
+  border: 1px solid rgba(240,112,32,.1);
+  border-radius: 12px; padding: 1.2rem;
+  font-family: 'DM Mono', monospace; font-size: .78rem;
+  color: rgba(245,237,224,.7); line-height: 1.7;
+}
+.demo-result .highlight { color: var(--gold); text-shadow: 0 0 10px rgba(245,166,35,.5); }
+.demo-arrow {
+  display: flex; align-items: center; justify-content: center;
+  margin: .6rem 0;
+  font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .1em;
+  color: var(--amber); opacity: .65;
+}
+
+/* ═══════════════════════════════════════════
+   SECTIONS GÉNÉRALES
+═══════════════════════════════════════════ */
+section { padding: 6rem 2rem; position: relative; z-index: 1; }
+.container { max-width: 1100px; margin: 0 auto; }
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace; font-size: .68rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: .8rem; display: block;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
+  color: var(--ink); line-height: 1.15; margin-bottom: 1rem;
+}
+.section-title em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--amber), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 14px rgba(240,112,32,.3));
+}
+.section-sub { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+/* ═══════════════════════════════════════════
+   COMMENT ÇA MARCHE
+═══════════════════════════════════════════ */
+.how-section { background: var(--warm); }
+.how-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 15% 60%, rgba(240,112,32,.05) 0%, transparent 55%);
+  pointer-events: none;
+}
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+.step {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 2rem;
+  box-shadow: var(--shadow);
+  position: relative; overflow: hidden;
+  transition: transform .22s, box-shadow .22s, border-color .22s;
+}
+.step::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240,112,32,.4), transparent);
+  opacity: 0; transition: opacity .22s;
+}
+.step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), var(--glow);
+  border-color: rgba(240,112,32,.3);
+}
+.step:hover::after { opacity: 1; }
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem; font-weight: 900;
+  color: var(--amber); opacity: .12;
+  position: absolute; top: 1rem; right: 1.4rem; line-height: 1;
+}
+.step-icon { font-size: 2rem; margin-bottom: 1rem; }
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--ink); margin-bottom: .6rem;
+}
+.step-desc { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+/* ═══════════════════════════════════════════
+   AVANT / APRÈS
+═══════════════════════════════════════════ */
+.compare-section { background: var(--cream); }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+.compare-card {
+  border-radius: 20px; padding: 2rem;
+  border: 1.5px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.compare-card.bad {
+  background: rgba(180,40,40,.05);
+  border-color: rgba(200,60,60,.15);
+}
+.compare-card.good {
+  background: rgba(240,112,32,.05);
+  border-color: rgba(240,112,32,.22);
+  box-shadow: var(--glow);
+}
+.compare-tag {
+  font-family: 'DM Mono', monospace; font-size: .62rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: .3em .8em; border-radius: 100px;
+  display: inline-block; margin-bottom: 1.2rem; font-weight: 500;
+}
+.compare-card.bad .compare-tag { background: rgba(220,60,60,.1); color: #f87070; }
+.compare-card.good .compare-tag { background: rgba(240,112,32,.12); color: var(--amber); }
+.compare-prompt {
+  font-family: 'DM Mono', monospace; font-size: .82rem;
+  line-height: 1.7; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;
+}
+.compare-card.bad .compare-prompt { background: rgba(180,40,40,.06); color: #9a8880; }
+.compare-card.good .compare-prompt {
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(240,112,32,.12);
+  color: rgba(245,237,224,.78);
+}
+.compare-result {
+  font-size: .85rem; color: var(--muted);
+  display: flex; align-items: center; gap: .5rem;
+}
+.compare-result::before { content: ''; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.compare-card.bad .compare-result::before { background: #e05050; box-shadow: 0 0 6px rgba(220,60,60,.4); }
+.compare-card.good .compare-result::before { background: var(--amber); box-shadow: 0 0 8px rgba(240,112,32,.5); }
+
+/* ═══════════════════════════════════════════
+   FONCTIONNALITÉS — fond ink (noir profond)
+═══════════════════════════════════════════ */
+.features-section {
+  background: #090704;
+  position: relative; overflow: hidden;
+}
+.features-section::before {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(245,166,35,.07) 0%, transparent 60%);
+  top: -15%; right: -8%; border-radius: 50%; pointer-events: none;
+}
+.features-section::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(240,112,32,.05) 0%, transparent 65%);
+  bottom: -10%; left: -5%; border-radius: 50%; pointer-events: none;
+}
+.features-section .section-title { color: var(--ink); }
+.features-section .section-sub { color: var(--muted); }
+
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.feature-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(240,112,32,.1);
+  border-radius: 16px; padding: 1.8rem;
+  transition: all .22s; position: relative; overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245,166,35,.4), transparent);
+  opacity: 0; transition: opacity .22s;
+}
+.feature-card:hover {
+  background: rgba(240,112,32,.07);
+  border-color: rgba(240,112,32,.28);
+  transform: translateY(-3px);
+  box-shadow: var(--glow);
+}
+.feature-card:hover::before { opacity: 1; }
+.feature-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+.feature-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--ink); margin-bottom: .5rem;
+}
+.feature-desc { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+
+/* ═══════════════════════════════════════════
+   PRICING
+═══════════════════════════════════════════ */
+.pricing-section { background: var(--warm); }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; align-items: start; }
+.pricing-card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 20px; padding: 2rem;
+  box-shadow: var(--shadow); position: relative;
+  transition: transform .22s, box-shadow .22s, border-color .22s;
+}
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), var(--glow);
+  border-color: rgba(240,112,32,.3);
+}
+.pricing-card.featured {
+  background: linear-gradient(160deg, #1e1208 0%, #120b04 100%);
+  border-color: var(--amber);
+  box-shadow: var(--shadow-lg), var(--glow-lg);
+  transform: scale(1.03);
+}
+.pricing-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+
+/* ligne top brillante sur la featured card */
+.pricing-card.featured::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--gold), var(--amber));
+  box-shadow: 0 0 14px rgba(245,166,35,.6);
+  border-radius: 20px 20px 0 0;
+}
+
+.pricing-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--amber), var(--gold));
+  color: #0e0b08;
+  font-family: 'DM Mono', monospace; font-size: .62rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .3em 1em; border-radius: 100px; white-space: nowrap;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(240,112,32,.5);
+}
+.pricing-plan {
+  font-family: 'DM Mono', monospace; font-size: .7rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .5rem;
+}
+.pricing-card.featured .pricing-plan { color: rgba(245,237,224,.4); }
+.pricing-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem; font-weight: 900; color: var(--ink);
+  line-height: 1; margin-bottom: .3rem;
+}
+.pricing-card.featured .pricing-price { color: #fff; }
+.pricing-price sup { font-size: 1.2rem; vertical-align: top; margin-top: .5rem; }
+.pricing-price span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .9rem; font-weight: 400; color: var(--muted); }
+.pricing-card.featured .pricing-price span { color: rgba(245,237,224,.4); }
+.pricing-desc { font-size: .82rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.5; }
+.pricing-card.featured .pricing-desc { color: rgba(245,237,224,.5); }
+.pricing-features { list-style: none; margin-bottom: 2rem; }
+.pricing-features li {
+  font-size: .85rem; color: var(--muted); padding: .45rem 0;
+  display: flex; align-items: center; gap: .6rem;
+  border-bottom: 1px solid rgba(240,112,32,.08);
+}
+.pricing-card.featured .pricing-features li {
+  color: rgba(245,237,224,.65);
+  border-color: rgba(240,112,32,.1);
+}
+.pricing-features li::before {
+  content: '✓'; color: var(--amber); font-weight: 700; flex-shrink: 0;
+  text-shadow: 0 0 8px rgba(240,112,32,.6);
+}
+.pricing-features li.no::before { content: '—'; color: var(--muted); text-shadow: none; }
+.pricing-btn {
+  display: block; text-align: center; text-decoration: none;
+  font-weight: 700; font-size: .9rem; padding: .8em;
+  border-radius: 12px; transition: all .2s;
+  border: 1.5px solid rgba(240,112,32,.2); color: var(--ink);
+  background: transparent;
+}
+.pricing-btn:hover {
+  border-color: rgba(240,112,32,.5);
+  background: var(--amber-lt); color: var(--amber);
+}
+.pricing-btn.featured-btn {
+  background: linear-gradient(135deg, var(--amber), #c05010);
+  border-color: transparent; color: #fff;
+  box-shadow: 0 4px 20px rgba(240,112,32,.4);
+  position: relative; overflow: hidden;
+}
+.pricing-btn.featured-btn::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,.12), transparent);
+  border-radius: inherit; pointer-events: none;
+}
+.pricing-btn.featured-btn:hover {
+  box-shadow: 0 6px 28px rgba(240,112,32,.55);
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════
+   TÉMOIGNAGES
+═══════════════════════════════════════════ */
+.testimonials-section { background: var(--cream); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.testimonial-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.8rem;
+  box-shadow: var(--shadow);
+  transition: all .22s; position: relative; overflow: hidden;
+}
+.testimonial-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(240,112,32,.02) 0%, transparent 55%);
+  pointer-events: none;
+}
+.testimonial-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(240,112,32,.25);
+  box-shadow: var(--shadow-lg), var(--glow);
+}
+.testimonial-quote {
+  font-size: .92rem; color: var(--ink); line-height: 1.7;
+  margin-bottom: 1.4rem; font-style: italic;
+}
+.testimonial-quote::before {
+  content: '"'; color: var(--amber); font-size: 1.8rem;
+  line-height: 0; vertical-align: -.4em;
+  text-shadow: 0 0 14px rgba(240,112,32,.5);
+}
+.testimonial-author { display: flex; align-items: center; gap: .8rem; }
+.author-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: .85rem; color: #0e0b08; flex-shrink: 0;
+  box-shadow: 0 0 14px rgba(240,112,32,.35);
+}
+.author-name { font-weight: 700; font-size: .85rem; color: var(--ink); }
+.author-role { font-size: .75rem; color: var(--muted); }
+.stars {
+  color: var(--gold); font-size: .8rem; margin-bottom: .8rem;
+  text-shadow: 0 0 10px rgba(245,166,35,.5);
+}
+
+/* ═══════════════════════════════════════════
+   CTA FINAL
+═══════════════════════════════════════════ */
+.cta-section {
+  background: #090704; text-align: center; padding: 8rem 2rem;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; width: 900px; height: 900px;
+  background: radial-gradient(circle,
+    rgba(240,112,32,.1) 0%,
+    rgba(245,166,35,.06) 35%,
+    transparent 65%);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  border-radius: 50%; pointer-events: none;
+}
+.cta-section::after {
+  content: '';
+  position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240,112,32,.35), transparent);
+}
+.cta-section .section-title { max-width: 700px; margin: 0 auto 1rem; }
+.cta-section .section-sub { color: var(--muted); margin: 0 auto 2.5rem; }
+.cta-note {
+  font-family: 'DM Mono', monospace; font-size: .68rem;
+  letter-spacing: .08em; color: rgba(138,122,104,.4);
+  margin-top: 1.2rem;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: #040302;
+  color: rgba(245,237,224,.3);
+  padding: 3rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+  border-top: 1px solid rgba(240,112,32,.1);
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 900; color: var(--ink);
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: .8rem; color: rgba(245,237,224,.3);
+  text-decoration: none; transition: color .18s;
+}
+.footer-links a:hover { color: var(--amber); }
+.footer-copy { font-size: .75rem; }
+
+/* ═══════════════════════════════════════════
+   AUTEUR
+═══════════════════════════════════════════ */
+.author-section {
+  background: var(--warm);
+  padding: 0 2rem 5rem;
+  position: relative; z-index: 1;
+}
+
+/* ── Terminal header bar ── */
+.author-terminal-header {
+  max-width: 1100px; margin: 0 auto;
+  background: #0a0704;
+  border: 1px solid rgba(240,112,32,.18);
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+  padding: .65rem 1.2rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.terminal-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+}
+.terminal-dot.red    { background: #ff5f57; box-shadow: 0 0 6px rgba(255,95,87,.5); }
+.terminal-dot.yellow { background: #febc2e; box-shadow: 0 0 6px rgba(254,188,46,.4); }
+.terminal-dot.green  { background: #28c840; box-shadow: 0 0 6px rgba(40,200,64,.4); }
+.terminal-title {
+  font-family: 'DM Mono', monospace;
+  font-size: .68rem; color: rgba(245,237,224,.3);
+  letter-spacing: .06em; margin-left: .6rem;
+}
+
+/* ── Carte intérieure (corps du terminal) ── */
+.author-inner {
+  max-width: 1100px; margin: 0 auto;
+  background: var(--card);
+  border: 1px solid rgba(240,112,32,.18);
+  border-top: 2px solid var(--amber);
+  border-radius: 0 0 20px 20px;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 3.5rem;
+  box-shadow: var(--shadow-lg), var(--glow);
+  position: relative; overflow: hidden;
+}
+/* glow interne */
+.author-inner::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(245,166,35,.06) 0%, transparent 65%);
+  border-radius: 50%; pointer-events: none;
+}
+
+/* ── Avatar ── */
+.author-left {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 1.5rem;
+}
+.author-avatar-wrap {
+  position: relative;
+  width: 130px; height: 130px;
+  display: flex; align-items: center; justify-content: center;
+}
+.author-avatar-ring {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(240,112,32,.35);
+  animation: spin-ring 8s linear infinite;
+}
+.author-avatar-ring.ring2 {
+  inset: 8px;
+  border-color: rgba(245,166,35,.2);
+  border-style: dashed;
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+@keyframes spin-ring {
+  to { transform: rotate(360deg); }
+}
+.author-initials {
+  width: 96px; height: 96px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), #c45510);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 900; color: #fff;
+  box-shadow: 0 0 30px rgba(240,112,32,.45), 0 4px 20px rgba(0,0,0,.5);
+  position: relative; z-index: 1;
+}
+.author-badge-row {
+  display: flex; flex-direction: column; gap: .5rem;
+  align-items: center;
+}
+.author-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: .62rem; letter-spacing: .08em;
+  background: rgba(240,112,32,.08);
+  border: 1px solid rgba(240,112,32,.18);
+  color: var(--amber);
+  padding: .3em .85em; border-radius: 100px;
+  white-space: nowrap;
+  transition: all .2s;
+}
+.author-chip:hover {
+  background: rgba(240,112,32,.15);
+  box-shadow: 0 0 10px rgba(240,112,32,.2);
+}
+
+/* ── Bio ── */
+.author-right { position: relative; z-index: 1; }
+.author-prompt-line {
+  display: flex; align-items: center; gap: .6rem;
+  margin-bottom: 1rem;
+  font-family: 'DM Mono', monospace; font-size: .78rem;
+}
+.prompt-sym {
+  color: var(--amber);
+  font-size: 1rem; font-weight: 700;
+  text-shadow: 0 0 10px rgba(240,112,32,.6);
+}
+.prompt-cmd {
+  color: rgba(245,237,224,.5);
+  letter-spacing: .06em;
+}
+/* curseur clignotant */
+.prompt-cmd::after {
+  content: '▋';
+  color: var(--amber);
+  margin-left: .2em;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+.author-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 900;
+  color: var(--ink); line-height: 1.1;
+  margin-bottom: .3rem;
+}
+.author-role-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .7rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 1.6rem;
+}
+.author-bio {
+  font-size: .95rem; color: var(--muted);
+  line-height: 1.75; margin-bottom: 1rem;
+}
+.author-bio em {
+  color: var(--ink); font-style: italic;
+  font-weight: 600;
+}
+.author-bio.last { margin-bottom: 2rem; }
+
+/* ── Liens ── */
+.author-links {
+  display: flex; flex-wrap: wrap; gap: .75rem;
+}
+.author-link {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: .75rem; letter-spacing: .04em;
+  color: var(--muted);
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(240,112,32,.15);
+  padding: .5em 1.1em; border-radius: 100px;
+  text-decoration: none;
+  transition: all .2s;
+}
+.author-link:hover {
+  color: var(--amber);
+  border-color: rgba(240,112,32,.4);
+  background: rgba(240,112,32,.07);
+  box-shadow: 0 0 14px rgba(240,112,32,.18);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .author-inner {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+  .author-left { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .author-badge-row { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  nav { padding: .8rem 1.2rem; }
+  .nav-links { display: none; }
+  .steps, .features-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .pricing-card.featured { transform: none; }
+  .hero-stats { gap: 1rem; }
+  .stat-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">PromptCraft <span class="badge">beta</span></a>
+  <div class="nav-links">
+    <a href="#comment">Comment ça marche</a>
+    <a href="#fonctionnalites">Fonctionnalités</a>
+    <a href="#tarifs">Tarifs</a>
+  </div>
+  <a href="https://getpromptcraft.org" class="nav-cta" target="_blank">Essayer gratuitement →</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-eyebrow">Agent IA · 3 étapes · Résultat immédiat</div>
+  <h1>Transformez vos idées en<br><em>prompts parfaits</em><br>en 3 secondes</h1>
+  <p class="hero-sub">Fini les résultats médiocres avec ChatGPT ou Claude. PromptCraft analyse votre besoin et génère un prompt structuré et professionnel — automatiquement.</p>
+  <div class="hero-ctas">
+    <a href="https://getpromptcraft.org" class="btn-primary" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Commencer gratuitement
+    </a>
+    <a href="#comment" class="btn-secondary">Voir comment ça marche</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">3<span>sec</span></div>
+      <div class="stat-label">par prompt généré</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">5<span>sections</span></div>
+      <div class="stat-label">structurées automatiquement</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">gratuit pour commencer</div>
+    </div>
+  </div>
+  <div class="hero-demo">
+    <div class="demo-card">
+      <div class="demo-label">Votre idée brute</div>
+      <div class="demo-input">
+        <span style="font-style:italic">Je veux un assistant pour rédiger des emails pro en anglais</span>
+        <span style="color:var(--amber);font-size:1.2rem;text-shadow:0 0 10px rgba(240,112,32,.6)">→</span>
+      </div>
+      <div class="demo-arrow">⬇ Agent IA en 3 étapes</div>
+      <div class="demo-label">Prompt structuré généré</div>
+      <div class="demo-result">
+        <span class="highlight">RÔLE :</span> You are an expert business communication specialist with 10+ years in corporate email writing...<br><br>
+        <span class="highlight">TÂCHE :</span> Draft professional emails that are formal yet warm, clear and action-oriented...<br><br>
+        <span class="highlight">FORMAT :</span> Subject line + 3 paragraphs max + clear call-to-action + professional closing...
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMENT ÇA MARCHE ── -->
+<section class="how-section" id="comment">
+  <div class="container">
+    <span class="section-eyebrow">Simple comme bonjour</span>
+    <h2 class="section-title">Comment ça <em>marche</em> ?</h2>
+    <p class="section-sub">Notre agent IA passe par 3 étapes pour transformer votre idée en prompt professionnel.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-icon">💬</div>
+        <div class="step-title">Décrivez votre besoin</div>
+        <p class="step-desc">En quelques mots, expliquez ce que vous voulez accomplir. Pas besoin d'être technique — parlez naturellement.</p>
+      </div>
+      <div class="step reveal" style="transition-delay:.15s">
+        <div class="step-num">2</div>
+        <div class="step-icon">🤖</div>
+        <div class="step-title">L'agent analyse et structure</div>
+        <p class="step-desc">Notre pipeline LangGraph détecte l'intention, le domaine et la complexité, puis génère 5 sections professionnelles.</p>
+      </div>
+      <div class="step reveal" style="transition-delay:.3s">
+        <div class="step-num">3</div>
+        <div class="step-icon">✨</div>
+        <div class="step-title">Copiez et utilisez</div>
+        <p class="step-desc">Votre prompt est prêt. Copiez-le et collez-le dans ChatGPT, Claude, Gemini ou n'importe quel autre outil IA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AVANT / APRÈS ── -->
+<section class="compare-section">
+  <div class="container">
+    <span class="section-eyebrow">La différence est énorme</span>
+    <h2 class="section-title">Avant <em>vs</em> Après PromptCraft</h2>
+    <p class="section-sub">Voyez par vous-même ce que change un prompt structuré vs une demande brute.</p>
+    <div class="compare-grid reveal">
+      <div class="compare-card bad">
+        <span class="compare-tag">❌ Sans PromptCraft</span>
+        <div class="compare-prompt">Écris-moi un email professionnel</div>
+        <div class="compare-result">Résultat générique, trop formel, inutilisable directement. Vous devez réécrire 5-6 fois.</div>
+      </div>
+      <div class="compare-card good">
+        <span class="compare-tag">✅ Avec PromptCraft</span>
+        <div class="compare-prompt">You are an expert business communication specialist. Draft a professional email that is formal yet warm, 3 paragraphs max, with a clear call-to-action closing. Tone: confident but approachable...</div>
+        <div class="compare-result">Résultat professionnel du premier essai. Utilisable immédiatement, zéro réécriture.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FONCTIONNALITÉS ── -->
+<section class="features-section" id="fonctionnalites">
+  <div class="container">
+    <span class="section-eyebrow">Tout ce dont vous avez besoin</span>
+    <h2 class="section-title">Des fonctionnalités <em>pensées</em> pour vous</h2>
+    <p class="section-sub">PromptCraft n'est pas juste un générateur de texte. C'est un vrai agent IA avec une architecture solide.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔍</div>
+        <div class="feature-title">Analyse intelligente</div>
+        <p class="feature-desc">Détecte automatiquement votre intention, le domaine (code, rédaction, analyse...) et la complexité de votre demande.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:.1s">
+        <div class="feature-icon">🏗️</div>
+        <div class="feature-title">5 sections structurées</div>
+        <p class="feature-desc">Rôle, contexte, tâche, format de sortie, contraintes — les 5 piliers d'un prompt professionnel, générés automatiquement.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:.2s">
+        <div class="feature-icon">✨</div>
+        <div class="feature-title">Raffinement final</div>
+        <p class="feature-desc">Le prompt est assemblé en un texte fluide, naturel et prêt à l'emploi — pas une simple concaténation mécanique.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:.3s">
+        <div class="feature-icon">📋</div>
+        <div class="feature-title">Historique complet</div>
+        <p class="feature-desc">Retrouvez tous vos prompts précédents. Rien n'est perdu — votre bibliothèque de prompts grandit avec vous.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:.4s">
+        <div class="feature-icon">🔐</div>
+        <div class="feature-title">Connexion Google</div>
+        <p class="feature-desc">Connexion en 1 clic avec votre compte Google. Pas de mot de passe à mémoriser, expérience fluide.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:.5s">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Mobile-first</div>
+        <p class="feature-desc">Interface pensée pour mobile avec menu burger, sidebar responsive. Générez vos prompts depuis n'importe où.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing-section" id="tarifs">
+  <div class="container" style="text-align:center">
+    <span class="section-eyebrow">Transparent et sans surprise</span>
+    <h2 class="section-title">Un prix <em>juste</em> pour tous</h2>
+    <p class="section-sub" style="margin:0 auto 0">Commencez gratuitement. Passez au Pro quand vous êtes prêt.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-plan">Gratuit</div>
+        <div class="pricing-price"><sup>$</sup>0<span>/mois</span></div>
+        <p class="pricing-desc">Parfait pour découvrir PromptCraft et tester la puissance des prompts structurés.</p>
+        <ul class="pricing-features">
+          <li>3 prompts par jour</li>
+          <li>Historique 7 jours</li>
+          <li>Connexion Google</li>
+          <li class="no">Export des prompts</li>
+          <li class="no">Support prioritaire</li>
+        </ul>
+        <a href="https://prompt-craft26.netlify.app" class="pricing-btn" target="_blank">Commencer gratuitement</a>
+      </div>
+      <div class="pricing-card featured reveal" style="transition-delay:.15s">
+        <div class="pricing-badge">⭐ Le plus populaire</div>
+        <div class="pricing-plan">Pro</div>
+        <div class="pricing-price"><sup>$</sup>5<span>/mois</span></div>
+        <p class="pricing-desc">Pour les professionnels qui utilisent l'IA quotidiennement et veulent des résultats parfaits.</p>
+        <ul class="pricing-features">
+          <li>Prompts illimités</li>
+          <li>Historique illimité</li>
+          <li>Connexion Google</li>
+          <li>Export .md / .txt</li>
+          <li>Support email</li>
+        </ul>
+        <a href="https://prompt-craft26.netlify.app" class="pricing-btn featured-btn" target="_blank">Essai 7 jours gratuit →</a>
+      </div>
+      <div class="pricing-card reveal" style="transition-delay:.3s">
+        <div class="pricing-plan">Team</div>
+        <div class="pricing-price"><sup>$</sup>15<span>/mois</span></div>
+        <p class="pricing-desc">Pour les équipes et agences qui veulent standardiser la qualité de leurs prompts IA.</p>
+        <ul class="pricing-features">
+          <li>Prompts illimités</li>
+          <li>Historique illimité</li>
+          <li>Jusqu'à 5 membres</li>
+          <li>Export .md / .txt</li>
+          <li>Support prioritaire</li>
+        </ul>
+        <a href="https://getpromptcraft.org" class="pricing-btn" target="_blank">Contacter l'équipe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TÉMOIGNAGES ── -->
+<section class="testimonials-section">
+  <div class="container">
+    <span class="section-eyebrow">Ce qu'ils en disent</span>
+    <h2 class="section-title">Nos utilisateurs <em>adorent</em> PromptCraft</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">J'utilisais ChatGPT depuis 1 an et je n'obtenais jamais vraiment ce que je voulais. Avec PromptCraft, mes résultats ont changé du tout au tout en 3 secondes.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,var(--amber),var(--gold))">SM</div>
+          <div>
+            <div class="author-name">Sarah M.</div>
+            <div class="author-role">Consultante Marketing, Paris</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:.15s">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">En tant que développeur, je génère des prompts pour déboguer mon code tous les jours. PromptCraft m'économise facilement 30 minutes par jour.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,#c45510,var(--amber))">AK</div>
+          <div>
+            <div class="author-name">Amine K.</div>
+            <div class="author-role">Développeur Full-Stack, Casablanca</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal" style="transition-delay:.3s">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">Simple, rapide, efficace. Le bouton "Continuer avec Google" m'a convaincu en 30 secondes. Je recommande à toute mon équipe.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,var(--gold),#e8a020)">FD</div>
+          <div>
+            <div class="author-name">Fatou D.</div>
+            <div class="author-role">Directrice de contenu, Dakar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+<section class="cta-section">
+  <div class="container" style="position:relative;z-index:1">
+    <span class="section-eyebrow">Prêt à transformer votre façon d'utiliser l'IA ?</span>
+    <h2 class="section-title">Votre premier prompt parfait<br><em>vous attend</em></h2>
+    <p class="section-sub">Rejoignez les professionnels qui obtiennent de meilleurs résultats avec l'IA. Gratuit, sans carte bancaire.</p>
+    <div class="hero-ctas">
+      <a href="https://getpromptcraft.org" class="btn-primary" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Commencer gratuitement
+      </a>
+    </div>
+    <p class="cta-note">Aucune carte bancaire requise · Connexion Google en 1 clic · Résultat en 3 secondes</p>
+  </div>
+</section>
+
+<!-- ── AUTEUR ── -->
+<section class="author-section">
+  <div class="container">
+    <div class="author-terminal-header">
+      <span class="terminal-dot red"></span>
+      <span class="terminal-dot yellow"></span>
+      <span class="terminal-dot green"></span>
+      <span class="terminal-title">~/promptcraft — about the builder</span>
+    </div>
+    <div class="author-inner reveal">
+
+      <!-- Avatar & identité -->
+      <div class="author-left">
+        <div class="author-avatar-wrap">
+          <div class="author-avatar-ring"></div>
+          <div class="author-avatar-ring ring2"></div>
+          <div class="author-initials">RD</div>
+        </div>
+        <div class="author-badge-row">
+          <span class="author-chip">🧠 AI Infrastructure</span>
+          <span class="author-chip">⚙️ Multi-Agent Systems</span>
+          <span class="author-chip">🚀 Builder</span>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="author-right">
+        <div class="author-prompt-line">
+          <span class="prompt-sym">$</span>
+          <span class="prompt-cmd">whoami</span>
+        </div>
+        <h2 class="author-name">DIAWANE Ramatoulaye</h2>
+        <p class="author-role-label">AI Infrastructure Engineer Student</p>
+
+        <p class="author-bio">
+          Je construis des choses qui <em>pensent</em>. PromptCraft est né d'une frustration simple — 
+          passer des heures à reformuler des prompts pour obtenir des résultats corrects. 
+          Alors j'ai décidé d'automatiser ça.
+        </p>
+        <p class="author-bio">
+          Étudiante ingénieure passionnée par l'IA et les systèmes multi-agents, je crois 
+          que la vraie valeur de l'intelligence artificielle se révèle quand on la structure bien. 
+          Chaque projet que je construis est une tentative de rendre l'IA plus <em>utile</em>, 
+          plus <em>précise</em>, plus <em>humaine</em> dans ses réponses.
+        </p>
+        <p class="author-bio last">
+          PromptCraft, c'est moi — une étudiante, un éditeur de code, et beaucoup de café. 
+          Si tu veux échanger sur l'IA, les agents ou juste construire quelque chose ensemble, 
+          ma boîte mail est ouverte.
+        </p>
+
+        <!-- Liens -->
+        <div class="author-links">
+          <a href="https://github.com/Ramadiaw12" target="_blank" class="author-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/ramatoulaye-diawane" target="_blank" class="author-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:rdiawane2001@gmail.com" class="author-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            rdiawane2001@gmail.com
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">PromptCraft</div>
+  <div class="footer-links">
+    <a href="https://getpromptcraft.org">App</a>
+    <a href="">API</a>
+    <a href="https://github.com/Ramadiaw12" target="_blank">GitHub</a>
+    <a href="mailto:superrama86@gmail.com">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 PromptCraft · DIAWANE Ramatoulaye</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
