@@ -928,6 +928,224 @@ footer {
   .hero-stats { gap: 1rem; }
   .stat-divider { display: none; }
 }
+
+
+/* ── DOCS SECTION ── */
+.docs-section {
+  background: #090704;
+  border-top: 1px solid rgba(240,112,32,.1);
+}
+.docs-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+/* SIDEBAR */
+.docs-sidebar {
+  position: sticky;
+  top: 5.5rem;
+  background: var(--card);
+  border: 1px solid rgba(240,112,32,.14);
+  border-radius: 16px;
+  padding: 1.2rem 0;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240,112,32,.2) transparent;
+}
+.docs-nav-group { margin-bottom: 1rem; }
+.docs-nav-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(138,122,104,.55);
+  padding: .4rem 1.2rem .25rem;
+}
+.docs-nav-item {
+  display: block;
+  font-size: .82rem; color: var(--muted);
+  text-decoration: none;
+  padding: .38rem 1.2rem;
+  border-left: 2px solid transparent;
+  transition: all .16s;
+}
+.docs-nav-item:hover {
+  color: var(--ink);
+  background: rgba(240,112,32,.04);
+}
+.docs-nav-item.active {
+  color: var(--amber);
+  border-left-color: var(--amber);
+  background: rgba(240,112,32,.06);
+}
+
+/* CONTENT AREA */
+.docs-content { min-height: 500px; }
+.docs-page { display: none; }
+.docs-page.active { display: block; }
+
+.docs-breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: .65rem; letter-spacing: .06em;
+  color: rgba(138,122,104,.45); margin-bottom: 1rem;
+}
+.docs-breadcrumb span { color: var(--amber); }
+
+.docs-page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem; font-weight: 900;
+  color: var(--ink); margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(240,112,32,.1);
+  padding-bottom: .8rem;
+}
+.docs-text {
+  font-size: .92rem; color: var(--muted);
+  line-height: 1.75; margin-bottom: 1.2rem;
+}
+
+/* Steps */
+.docs-steps-list { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
+.docs-step-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: rgba(240,112,32,.04);
+  border: 1px solid rgba(240,112,32,.1);
+  border-radius: 12px; padding: 1rem 1.2rem;
+}
+.docs-step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), #c45510);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: .72rem; font-weight: 700;
+  color: #0e0b08; flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(240,112,32,.35);
+}
+.docs-step-body strong {
+  display: block; font-size: .88rem; color: var(--ink); margin-bottom: .3rem;
+}
+.docs-step-body p { font-size: .82rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+/* Callouts */
+.docs-callout {
+  display: flex; align-items: flex-start; gap: .8rem;
+  background: rgba(240,112,32,.06);
+  border: 1px solid rgba(240,112,32,.18);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.2rem; margin: 1.2rem 0;
+}
+.docs-callout-warn {
+  background: rgba(245,166,35,.05);
+  border-color: var(--gold); border-left-color: var(--gold);
+}
+.docs-callout-danger {
+  background: rgba(200,60,60,.05);
+  border-color: rgba(200,60,60,.2); border-left-color: #e05050;
+}
+.docs-callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+.docs-callout p { font-size: .85rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+/* Feature list */
+.docs-feature-list { display: flex; flex-direction: column; gap: .8rem; margin: 1.2rem 0; }
+.docs-feature-row {
+  display: flex; align-items: flex-start; gap: .9rem;
+  padding: .8rem; border-radius: 10px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(240,112,32,.08);
+}
+.docs-feature-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem; }
+.docs-feature-row strong { display: block; font-size: .88rem; color: var(--ink); margin-bottom: .2rem; }
+.docs-feature-row p { font-size: .82rem; color: var(--muted); margin: 0; line-height: 1.55; }
+
+/* Tag grid */
+.docs-tag-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; margin: 1.5rem 0;
+}
+.docs-tag-card {
+  background: rgba(240,112,32,.04);
+  border: 1px solid rgba(240,112,32,.12);
+  border-radius: 12px; padding: 1rem;
+}
+.docs-tag {
+  font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .08em;
+  background: rgba(240,112,32,.1); border: 1px solid rgba(240,112,32,.2);
+  color: var(--amber); padding: .25em .7em; border-radius: 100px;
+  display: inline-block; margin-bottom: .6rem;
+}
+.docs-tag-card p { font-size: .82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+
+/* Code inline */
+.docs-code {
+  font-family: 'DM Mono', monospace; font-size: .78rem;
+  background: rgba(240,112,32,.08); border: 1px solid rgba(240,112,32,.15);
+  color: var(--amber); padding: .15em .5em; border-radius: 5px;
+}
+.docs-link { color: var(--amber); text-decoration: underline; text-underline-offset: 2px; }
+.docs-link:hover { color: var(--gold); }
+
+/* Pipeline */
+.docs-pipeline {
+  display: flex; align-items: flex-start; gap: .5rem;
+  margin: 1.5rem 0; flex-wrap: wrap;
+}
+.docs-pipeline-step {
+  flex: 1; min-width: 140px;
+  background: rgba(240,112,32,.05);
+  border: 1px solid rgba(240,112,32,.14);
+  border-radius: 14px; padding: 1.2rem; text-align: center;
+}
+.docs-pipeline-icon { font-size: 1.8rem; margin-bottom: .5rem; }
+.docs-pipeline-label {
+  font-family: 'Playfair Display', serif;
+  font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem;
+}
+.docs-pipeline-desc { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+.docs-pipeline-arrow {
+  align-self: center; color: var(--amber); font-size: 1.2rem;
+  font-weight: 700; flex-shrink: 0; margin-top: -1rem; opacity: .6;
+}
+
+/* Tips */
+.docs-tips { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.docs-tip { border-radius: 12px; padding: 1.2rem; }
+.docs-tip.good { background: rgba(240,112,32,.05); border: 1px solid rgba(240,112,32,.15); }
+.docs-tip.bad { background: rgba(200,60,60,.04); border: 1px solid rgba(200,60,60,.12); }
+.docs-tip-label {
+  display: block; font-family: 'DM Mono', monospace;
+  font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .8rem;
+}
+.docs-tip.good .docs-tip-label { color: var(--amber); }
+.docs-tip.bad .docs-tip-label { color: #e05050; }
+.docs-tip ul { list-style: none; padding: 0; }
+.docs-tip ul li {
+  font-size: .82rem; color: var(--muted); line-height: 1.55;
+  padding: .3rem 0; border-bottom: 1px solid rgba(240,112,32,.06);
+}
+.docs-tip.bad ul li { border-color: rgba(200,60,60,.06); }
+.docs-tip ul li:last-child { border-bottom: none; }
+
+/* Use cases */
+.docs-use-cases { display: flex; flex-direction: column; gap: .8rem; margin: 1.5rem 0; }
+.docs-use-case {
+  background: rgba(255,255,255,.02); border: 1px solid rgba(240,112,32,.09);
+  border-radius: 10px; padding: .9rem 1.1rem;
+  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+}
+.docs-use-case .docs-code { flex-shrink: 0; }
+.docs-use-case p { font-size: .83rem; color: var(--muted); margin: 0; line-height: 1.55; font-style: italic; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .docs-layout { grid-template-columns: 1fr; }
+  .docs-sidebar { position: static; max-height: none; }
+  .docs-pipeline { flex-direction: column; }
+  .docs-pipeline-arrow { transform: rotate(90deg); align-self: center; }
+  .docs-tips { grid-template-columns: 1fr; }
+  .docs-tag-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -1267,20 +1485,8 @@ footer {
     </div>
   </div>
 </section>
-<!-- 
-  ╔══════════════════════════════════════════════════════════╗
-  ║  INSTRUCTIONS D'INTÉGRATION — PromptCraft Documentation  ║
-  ╠══════════════════════════════════════════════════════════╣
-  ║  Collez tout ce fichier juste AVANT le bloc              ║
-  ║  <!-- ── FOOTER ── --> dans votre landing page.          ║
-  ║  Le <style> et le <script> sont inclus ici.              ║
-  ╚══════════════════════════════════════════════════════════╝
-  
-  Ajoutez aussi ce lien dans la nav (section .nav-links) :
-  <a href="#documentation">Documentation</a>
--->
 
-<!-- ── DOCUMENTATION ── -->
+<!--  DOCUMENTATION  -->
 <section class="docs-section" id="documentation">
   <div class="container">
     <span class="section-eyebrow">Documentation complète</span>
@@ -1368,7 +1574,7 @@ footer {
           </div>
         </div>
 
-        <!-- ─ connexion ─ -->
+        <!-- connexion  -->
         <div class="docs-page" id="page-connexion">
           <div class="docs-breadcrumb">Démarrage rapide → <span>Connexion</span></div>
           <h3 class="docs-page-title">Connexion</h3>
@@ -1472,7 +1678,7 @@ footer {
           </div>
         </div>
 
-        <!-- ─ supprimer prompt ─ -->
+        <!-- ─ supprimer prompt  -->
         <div class="docs-page" id="page-supprimer-prompt">
           <div class="docs-breadcrumb">Gestion des prompts → <span>Supprimer un prompt</span></div>
           <h3 class="docs-page-title">Supprimer un prompt</h3>
@@ -1590,7 +1796,7 @@ footer {
           </div>
         </div>
 
-        <!-- ─ bonnes pratiques ─ -->
+        <!-- bonnes pratiques -->
         <div class="docs-page" id="page-bonnes-pratiques">
           <div class="docs-breadcrumb">Optimisation → <span>Bonnes pratiques</span></div>
           <h3 class="docs-page-title">Bonnes pratiques</h3>
@@ -1616,7 +1822,7 @@ footer {
           </div>
         </div>
 
-        <!-- ─ developpeurs ─ -->
+        <!-- developpeurs -->
         <div class="docs-page" id="page-developpeurs">
           <div class="docs-breadcrumb">Cas d'utilisation → <span>Développeurs</span></div>
           <h3 class="docs-page-title">PromptCraft pour les développeurs</h3>
@@ -1629,7 +1835,7 @@ footer {
           </div>
         </div>
 
-        <!-- ─ createurs ─ -->
+        <!-- createurs -->
         <div class="docs-page" id="page-createurs">
           <div class="docs-breadcrumb">Cas d'utilisation → <span>Créateurs de contenu</span></div>
           <h3 class="docs-page-title">PromptCraft pour les créateurs de contenu</h3>
@@ -1641,7 +1847,7 @@ footer {
           </div>
         </div>
 
-        <!-- ─ etudiants ─ -->
+        <!-- etudiants -->
         <div class="docs-page" id="page-etudiants">
           <div class="docs-breadcrumb">Cas d'utilisation → <span>Étudiants</span></div>
           <h3 class="docs-page-title">PromptCraft pour les étudiants</h3>
@@ -1653,7 +1859,7 @@ footer {
           </div>
         </div>
 
-        <!-- ─ startups ─ -->
+        <!-- startups -->
         <div class="docs-page" id="page-startups">
           <div class="docs-breadcrumb">Cas d'utilisation → <span>Startups</span></div>
           <h3 class="docs-page-title">PromptCraft pour les startups</h3>
@@ -1665,7 +1871,7 @@ footer {
           </div>
         </div>
 
-        <!-- ─ marketing ─ -->
+        <!-- marketing -->
         <div class="docs-page" id="page-marketing">
           <div class="docs-breadcrumb">Cas d'utilisation → <span>Équipes marketing</span></div>
           <h3 class="docs-page-title">PromptCraft pour les équipes marketing</h3>
@@ -1682,223 +1888,6 @@ footer {
   </div>
 </section>
 
-<style>
-/* ── DOCS SECTION ── */
-.docs-section {
-  background: #090704;
-  border-top: 1px solid rgba(240,112,32,.1);
-}
-.docs-layout {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 2.5rem;
-  margin-top: 3rem;
-  align-items: start;
-}
-
-/* SIDEBAR */
-.docs-sidebar {
-  position: sticky;
-  top: 5.5rem;
-  background: var(--card);
-  border: 1px solid rgba(240,112,32,.14);
-  border-radius: 16px;
-  padding: 1.2rem 0;
-  max-height: calc(100vh - 8rem);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(240,112,32,.2) transparent;
-}
-.docs-nav-group { margin-bottom: 1rem; }
-.docs-nav-label {
-  font-family: 'DM Mono', monospace;
-  font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
-  color: rgba(138,122,104,.55);
-  padding: .4rem 1.2rem .25rem;
-}
-.docs-nav-item {
-  display: block;
-  font-size: .82rem; color: var(--muted);
-  text-decoration: none;
-  padding: .38rem 1.2rem;
-  border-left: 2px solid transparent;
-  transition: all .16s;
-}
-.docs-nav-item:hover {
-  color: var(--ink);
-  background: rgba(240,112,32,.04);
-}
-.docs-nav-item.active {
-  color: var(--amber);
-  border-left-color: var(--amber);
-  background: rgba(240,112,32,.06);
-}
-
-/* CONTENT AREA */
-.docs-content { min-height: 500px; }
-.docs-page { display: none; }
-.docs-page.active { display: block; }
-
-.docs-breadcrumb {
-  font-family: 'DM Mono', monospace;
-  font-size: .65rem; letter-spacing: .06em;
-  color: rgba(138,122,104,.45); margin-bottom: 1rem;
-}
-.docs-breadcrumb span { color: var(--amber); }
-
-.docs-page-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem; font-weight: 900;
-  color: var(--ink); margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(240,112,32,.1);
-  padding-bottom: .8rem;
-}
-.docs-text {
-  font-size: .92rem; color: var(--muted);
-  line-height: 1.75; margin-bottom: 1.2rem;
-}
-
-/* Steps */
-.docs-steps-list { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
-.docs-step-item {
-  display: flex; align-items: flex-start; gap: 1rem;
-  background: rgba(240,112,32,.04);
-  border: 1px solid rgba(240,112,32,.1);
-  border-radius: 12px; padding: 1rem 1.2rem;
-}
-.docs-step-num {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--amber), #c45510);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Mono', monospace; font-size: .72rem; font-weight: 700;
-  color: #0e0b08; flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(240,112,32,.35);
-}
-.docs-step-body strong {
-  display: block; font-size: .88rem; color: var(--ink); margin-bottom: .3rem;
-}
-.docs-step-body p { font-size: .82rem; color: var(--muted); line-height: 1.6; margin: 0; }
-
-/* Callouts */
-.docs-callout {
-  display: flex; align-items: flex-start; gap: .8rem;
-  background: rgba(240,112,32,.06);
-  border: 1px solid rgba(240,112,32,.18);
-  border-left: 3px solid var(--amber);
-  border-radius: 0 12px 12px 0;
-  padding: 1rem 1.2rem; margin: 1.2rem 0;
-}
-.docs-callout-warn {
-  background: rgba(245,166,35,.05);
-  border-color: var(--gold); border-left-color: var(--gold);
-}
-.docs-callout-danger {
-  background: rgba(200,60,60,.05);
-  border-color: rgba(200,60,60,.2); border-left-color: #e05050;
-}
-.docs-callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
-.docs-callout p { font-size: .85rem; color: var(--muted); line-height: 1.6; margin: 0; }
-
-/* Feature list */
-.docs-feature-list { display: flex; flex-direction: column; gap: .8rem; margin: 1.2rem 0; }
-.docs-feature-row {
-  display: flex; align-items: flex-start; gap: .9rem;
-  padding: .8rem; border-radius: 10px;
-  background: rgba(255,255,255,.02);
-  border: 1px solid rgba(240,112,32,.08);
-}
-.docs-feature-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem; }
-.docs-feature-row strong { display: block; font-size: .88rem; color: var(--ink); margin-bottom: .2rem; }
-.docs-feature-row p { font-size: .82rem; color: var(--muted); margin: 0; line-height: 1.55; }
-
-/* Tag grid */
-.docs-tag-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 1rem; margin: 1.5rem 0;
-}
-.docs-tag-card {
-  background: rgba(240,112,32,.04);
-  border: 1px solid rgba(240,112,32,.12);
-  border-radius: 12px; padding: 1rem;
-}
-.docs-tag {
-  font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .08em;
-  background: rgba(240,112,32,.1); border: 1px solid rgba(240,112,32,.2);
-  color: var(--amber); padding: .25em .7em; border-radius: 100px;
-  display: inline-block; margin-bottom: .6rem;
-}
-.docs-tag-card p { font-size: .82rem; color: var(--muted); line-height: 1.5; margin: 0; }
-
-/* Code inline */
-.docs-code {
-  font-family: 'DM Mono', monospace; font-size: .78rem;
-  background: rgba(240,112,32,.08); border: 1px solid rgba(240,112,32,.15);
-  color: var(--amber); padding: .15em .5em; border-radius: 5px;
-}
-.docs-link { color: var(--amber); text-decoration: underline; text-underline-offset: 2px; }
-.docs-link:hover { color: var(--gold); }
-
-/* Pipeline */
-.docs-pipeline {
-  display: flex; align-items: flex-start; gap: .5rem;
-  margin: 1.5rem 0; flex-wrap: wrap;
-}
-.docs-pipeline-step {
-  flex: 1; min-width: 140px;
-  background: rgba(240,112,32,.05);
-  border: 1px solid rgba(240,112,32,.14);
-  border-radius: 14px; padding: 1.2rem; text-align: center;
-}
-.docs-pipeline-icon { font-size: 1.8rem; margin-bottom: .5rem; }
-.docs-pipeline-label {
-  font-family: 'Playfair Display', serif;
-  font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem;
-}
-.docs-pipeline-desc { font-size: .78rem; color: var(--muted); line-height: 1.5; }
-.docs-pipeline-arrow {
-  align-self: center; color: var(--amber); font-size: 1.2rem;
-  font-weight: 700; flex-shrink: 0; margin-top: -1rem; opacity: .6;
-}
-
-/* Tips */
-.docs-tips { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-.docs-tip { border-radius: 12px; padding: 1.2rem; }
-.docs-tip.good { background: rgba(240,112,32,.05); border: 1px solid rgba(240,112,32,.15); }
-.docs-tip.bad { background: rgba(200,60,60,.04); border: 1px solid rgba(200,60,60,.12); }
-.docs-tip-label {
-  display: block; font-family: 'DM Mono', monospace;
-  font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .8rem;
-}
-.docs-tip.good .docs-tip-label { color: var(--amber); }
-.docs-tip.bad .docs-tip-label { color: #e05050; }
-.docs-tip ul { list-style: none; padding: 0; }
-.docs-tip ul li {
-  font-size: .82rem; color: var(--muted); line-height: 1.55;
-  padding: .3rem 0; border-bottom: 1px solid rgba(240,112,32,.06);
-}
-.docs-tip.bad ul li { border-color: rgba(200,60,60,.06); }
-.docs-tip ul li:last-child { border-bottom: none; }
-
-/* Use cases */
-.docs-use-cases { display: flex; flex-direction: column; gap: .8rem; margin: 1.5rem 0; }
-.docs-use-case {
-  background: rgba(255,255,255,.02); border: 1px solid rgba(240,112,32,.09);
-  border-radius: 10px; padding: .9rem 1.1rem;
-  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
-}
-.docs-use-case .docs-code { flex-shrink: 0; }
-.docs-use-case p { font-size: .83rem; color: var(--muted); margin: 0; line-height: 1.55; font-style: italic; }
-
-/* Responsive */
-@media (max-width: 900px) {
-  .docs-layout { grid-template-columns: 1fr; }
-  .docs-sidebar { position: static; max-height: none; }
-  .docs-pipeline { flex-direction: column; }
-  .docs-pipeline-arrow { transform: rotate(90deg); align-self: center; }
-  .docs-tips { grid-template-columns: 1fr; }
-  .docs-tag-grid { grid-template-columns: 1fr; }
-}
-</style>
 
 <script>
 (function() {
