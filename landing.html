@@ -938,12 +938,13 @@ footer {
   <div class="nav-links">
     <a href="#comment">Comment ça marche</a>
     <a href="#fonctionnalites">Fonctionnalités</a>
+    <a href="#documentation">Documentation</a>
     <a href="#tarifs">Tarifs</a>
   </div>
   <a href="https://getpromptcraft.org" class="nav-cta" target="_blank">Essayer gratuitement →</a>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-orb"></div>
   <div class="hero-orb2"></div>
@@ -1020,7 +1021,7 @@ footer {
   </div>
 </section>
 
-<!-- ── AVANT / APRÈS ── -->
+<!-- AVANT / APRÈS -->
 <section class="compare-section">
   <div class="container">
     <span class="section-eyebrow">La différence est énorme</span>
@@ -1266,6 +1267,656 @@ footer {
     </div>
   </div>
 </section>
+<!-- 
+  ╔══════════════════════════════════════════════════════════╗
+  ║  INSTRUCTIONS D'INTÉGRATION — PromptCraft Documentation  ║
+  ╠══════════════════════════════════════════════════════════╣
+  ║  Collez tout ce fichier juste AVANT le bloc              ║
+  ║  <!-- ── FOOTER ── --> dans votre landing page.          ║
+  ║  Le <style> et le <script> sont inclus ici.              ║
+  ╚══════════════════════════════════════════════════════════╝
+  
+  Ajoutez aussi ce lien dans la nav (section .nav-links) :
+  <a href="#documentation">Documentation</a>
+-->
+
+<!-- ── DOCUMENTATION ── -->
+<section class="docs-section" id="documentation">
+  <div class="container">
+    <span class="section-eyebrow">Documentation complète</span>
+    <h2 class="section-title">Tout ce qu'il faut <em>savoir</em></h2>
+    <p class="section-sub">Guides, références et bonnes pratiques pour tirer le meilleur de PromptCraft.</p>
+
+    <div class="docs-layout">
+
+      <!-- SIDEBAR -->
+      <nav class="docs-sidebar" id="docsSidebar">
+        <div class="docs-nav-group">
+          <div class="docs-nav-label">Démarrage rapide</div>
+          <a href="#" class="docs-nav-item active" data-section="creation-compte">Création d'un compte</a>
+          <a href="#" class="docs-nav-item" data-section="connexion">Connexion</a>
+          <a href="#" class="docs-nav-item" data-section="premiere-utilisation">Première utilisation</a>
+          <a href="#" class="docs-nav-item" data-section="premier-prompt">Créer un premier prompt</a>
+        </div>
+        <div class="docs-nav-group">
+          <div class="docs-nav-label">Gestion des prompts</div>
+          <a href="#" class="docs-nav-item" data-section="creer-prompt">Créer un prompt</a>
+          <a href="#" class="docs-nav-item" data-section="modifier-prompt">Modifier un prompt</a>
+          <a href="#" class="docs-nav-item" data-section="supprimer-prompt">Supprimer un prompt</a>
+          <a href="#" class="docs-nav-item" data-section="organiser-prompts">Organiser ses prompts</a>
+        </div>
+        <div class="docs-nav-group">
+          <div class="docs-nav-label">Bibliothèque</div>
+          <a href="#" class="docs-nav-item" data-section="recherche">Recherche</a>
+          <a href="#" class="docs-nav-item" data-section="categories">Catégories</a>
+          <a href="#" class="docs-nav-item" data-section="favoris">Favoris</a>
+        </div>
+        <div class="docs-nav-group">
+          <div class="docs-nav-label">Partage</div>
+          <a href="#" class="docs-nav-item" data-section="partager-prompt">Partager un prompt</a>
+          <a href="#" class="docs-nav-item" data-section="collaboration">Collaboration</a>
+        </div>
+        <div class="docs-nav-group">
+          <div class="docs-nav-label">Optimisation</div>
+          <a href="#" class="docs-nav-item" data-section="comment-amelioration">Comment ça fonctionne</a>
+          <a href="#" class="docs-nav-item" data-section="bonnes-pratiques">Bonnes pratiques</a>
+        </div>
+        <div class="docs-nav-group">
+          <div class="docs-nav-label">Cas d'utilisation</div>
+          <a href="#" class="docs-nav-item" data-section="developpeurs">Développeurs</a>
+          <a href="#" class="docs-nav-item" data-section="createurs">Créateurs de contenu</a>
+          <a href="#" class="docs-nav-item" data-section="etudiants">Étudiants</a>
+          <a href="#" class="docs-nav-item" data-section="startups">Startups</a>
+          <a href="#" class="docs-nav-item" data-section="marketing">Équipes marketing</a>
+        </div>
+      </nav>
+
+      <!-- CONTENT PANE -->
+      <div class="docs-content" id="docsContent">
+
+        <!-- ─ création compte ─ -->
+        <div class="docs-page active" id="page-creation-compte">
+          <div class="docs-breadcrumb">Démarrage rapide → <span>Création d'un compte</span></div>
+          <h3 class="docs-page-title">Création d'un compte</h3>
+          <p class="docs-text">Créer un compte PromptCraft prend moins de 30 secondes. Aucune carte bancaire n'est requise pour commencer.</p>
+          <div class="docs-steps-list">
+            <div class="docs-step-item">
+              <div class="docs-step-num">1</div>
+              <div class="docs-step-body">
+                <strong>Accédez à l'application</strong>
+                <p>Rendez-vous sur <a href="https://getpromptcraft.org" target="_blank" class="docs-link">getpromptcraft.org</a> depuis n'importe quel navigateur.</p>
+              </div>
+            </div>
+            <div class="docs-step-item">
+              <div class="docs-step-num">2</div>
+              <div class="docs-step-body">
+                <strong>Cliquez sur "Continuer avec Google"</strong>
+                <p>L'authentification se fait exclusivement via Google OAuth — sécurisé, rapide, sans mot de passe à retenir.</p>
+              </div>
+            </div>
+            <div class="docs-step-item">
+              <div class="docs-step-num">3</div>
+              <div class="docs-step-body">
+                <strong>Autorisez l'accès</strong>
+                <p>Sélectionnez votre compte Google et confirmez les permissions. PromptCraft n'accède qu'à votre nom et email.</p>
+              </div>
+            </div>
+          </div>
+          <div class="docs-callout">
+            <span class="docs-callout-icon">💡</span>
+            <p>Votre compte est actif immédiatement. Vous bénéficiez du plan Gratuit avec 3 prompts par jour dès la première connexion.</p>
+          </div>
+        </div>
+
+        <!-- ─ connexion ─ -->
+        <div class="docs-page" id="page-connexion">
+          <div class="docs-breadcrumb">Démarrage rapide → <span>Connexion</span></div>
+          <h3 class="docs-page-title">Connexion</h3>
+          <p class="docs-text">PromptCraft utilise Google OAuth pour toutes les connexions. Votre session reste active pendant 30 jours.</p>
+          <div class="docs-steps-list">
+            <div class="docs-step-item">
+              <div class="docs-step-num">1</div>
+              <div class="docs-step-body">
+                <strong>Ouvrez l'application</strong>
+                <p>Allez sur <a href="https://getpromptcraft.org" target="_blank" class="docs-link">getpromptcraft.org</a>. Si vous avez déjà un compte, votre session peut être encore active.</p>
+              </div>
+            </div>
+            <div class="docs-step-item">
+              <div class="docs-step-num">2</div>
+              <div class="docs-step-body">
+                <strong>Cliquez sur "Connexion"</strong>
+                <p>Le bouton Google vous redirige vers la page d'authentification Google, puis de retour sur PromptCraft automatiquement.</p>
+              </div>
+            </div>
+          </div>
+          <div class="docs-callout docs-callout-warn">
+            <span class="docs-callout-icon">⚠️</span>
+            <p>Si vous changez de navigateur ou d'appareil, une nouvelle authentification Google sera demandée.</p>
+          </div>
+        </div>
+
+        <!-- ─ premiere utilisation ─ -->
+        <div class="docs-page" id="page-premiere-utilisation">
+          <div class="docs-breadcrumb">Démarrage rapide → <span>Première utilisation</span></div>
+          <h3 class="docs-page-title">Première utilisation</h3>
+          <p class="docs-text">À votre première connexion, vous arrivez sur le tableau de bord principal. Voici les éléments clés de l'interface.</p>
+          <div class="docs-feature-list">
+            <div class="docs-feature-row">
+              <div class="docs-feature-icon">📝</div>
+              <div><strong>Zone de saisie</strong><p>Décrivez votre besoin en langage naturel dans la zone centrale. Pas besoin d'être technique.</p></div>
+            </div>
+            <div class="docs-feature-row">
+              <div class="docs-feature-icon">⚙️</div>
+              <div><strong>Sélecteur de mode</strong><p>Choisissez entre Concis, Complet ou Expert selon la profondeur souhaitée.</p></div>
+            </div>
+            <div class="docs-feature-row">
+              <div class="docs-feature-icon">📚</div>
+              <div><strong>Historique latéral</strong><p>Vos prompts précédents sont accessibles via la sidebar gauche, classés par date.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─ premier prompt ─ -->
+        <div class="docs-page" id="page-premier-prompt">
+          <div class="docs-breadcrumb">Démarrage rapide → <span>Créer un premier prompt</span></div>
+          <h3 class="docs-page-title">Créer un premier prompt</h3>
+          <p class="docs-text">Générer votre premier prompt structuré prend moins de 10 secondes.</p>
+          <div class="docs-steps-list">
+            <div class="docs-step-item">
+              <div class="docs-step-num">1</div>
+              <div class="docs-step-body">
+                <strong>Décrivez votre besoin</strong>
+                <p>Exemple : <span class="docs-code">Je veux rédiger des emails professionnels en anglais</span></p>
+              </div>
+            </div>
+            <div class="docs-step-item">
+              <div class="docs-step-num">2</div>
+              <div class="docs-step-body">
+                <strong>Choisissez le mode</strong>
+                <p>Sélectionnez Concis pour un résultat direct, Complet pour une structure détaillée, Expert pour des cas techniques avancés.</p>
+              </div>
+            </div>
+            <div class="docs-step-item">
+              <div class="docs-step-num">3</div>
+              <div class="docs-step-body">
+                <strong>Cliquez sur "Générer"</strong>
+                <p>L'agent LangGraph analyse et produit votre prompt en 3 secondes. Copiez-le et utilisez-le immédiatement dans n'importe quel outil IA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─ creer prompt ─ -->
+        <div class="docs-page" id="page-creer-prompt">
+          <div class="docs-breadcrumb">Gestion des prompts → <span>Créer un prompt</span></div>
+          <h3 class="docs-page-title">Créer un prompt</h3>
+          <p class="docs-text">L'agent PromptCraft génère automatiquement 5 sections structurées à partir de votre description.</p>
+          <div class="docs-tag-grid">
+            <div class="docs-tag-card"><span class="docs-tag">Rôle</span><p>Définit l'expertise et la posture que l'IA doit adopter.</p></div>
+            <div class="docs-tag-card"><span class="docs-tag">Contexte</span><p>Fournit les informations de fond nécessaires à la tâche.</p></div>
+            <div class="docs-tag-card"><span class="docs-tag">Tâche</span><p>Décrit précisément ce que l'IA doit accomplir.</p></div>
+            <div class="docs-tag-card"><span class="docs-tag">Format</span><p>Spécifie la structure, la longueur et le style de sortie.</p></div>
+            <div class="docs-tag-card"><span class="docs-tag">Contraintes</span><p>Fixe les limites et les règles à respecter absolument.</p></div>
+          </div>
+        </div>
+
+        <!-- ─ modifier prompt ─ -->
+        <div class="docs-page" id="page-modifier-prompt">
+          <div class="docs-breadcrumb">Gestion des prompts → <span>Modifier un prompt</span></div>
+          <h3 class="docs-page-title">Modifier un prompt</h3>
+          <p class="docs-text">Chaque prompt généré peut être édité directement dans l'interface via l'éditeur inline.</p>
+          <div class="docs-steps-list">
+            <div class="docs-step-item"><div class="docs-step-num">1</div><div class="docs-step-body"><strong>Ouvrez le prompt depuis l'historique</strong><p>Cliquez sur le prompt dans la sidebar pour le charger dans l'éditeur.</p></div></div>
+            <div class="docs-step-item"><div class="docs-step-num">2</div><div class="docs-step-body"><strong>Activez l'édition</strong><p>Cliquez sur l'icône crayon pour passer en mode édition. Le contenu devient modifiable directement.</p></div></div>
+            <div class="docs-step-item"><div class="docs-step-num">3</div><div class="docs-step-body"><strong>Sauvegardez</strong><p>Cliquez sur "Enregistrer" pour conserver vos modifications dans votre historique.</p></div></div>
+          </div>
+        </div>
+
+        <!-- ─ supprimer prompt ─ -->
+        <div class="docs-page" id="page-supprimer-prompt">
+          <div class="docs-breadcrumb">Gestion des prompts → <span>Supprimer un prompt</span></div>
+          <h3 class="docs-page-title">Supprimer un prompt</h3>
+          <p class="docs-text">La suppression d'un prompt est définitive. Exportez vos prompts importants avant de les supprimer.</p>
+          <div class="docs-callout docs-callout-danger">
+            <span class="docs-callout-icon">🗑️</span>
+            <p>La suppression est irréversible. Les utilisateurs Pro peuvent exporter en .md ou .txt avant suppression.</p>
+          </div>
+          <div class="docs-steps-list" style="margin-top:1.5rem">
+            <div class="docs-step-item"><div class="docs-step-num">1</div><div class="docs-step-body"><strong>Accédez à l'historique</strong><p>Survolez le prompt à supprimer dans la sidebar.</p></div></div>
+            <div class="docs-step-item"><div class="docs-step-num">2</div><div class="docs-step-body"><strong>Cliquez sur l'icône corbeille</strong><p>Une confirmation vous sera demandée avant la suppression définitive.</p></div></div>
+          </div>
+        </div>
+
+        <!-- ─ organiser prompts ─ -->
+        <div class="docs-page" id="page-organiser-prompts">
+          <div class="docs-breadcrumb">Gestion des prompts → <span>Organiser ses prompts</span></div>
+          <h3 class="docs-page-title">Organiser ses prompts</h3>
+          <p class="docs-text">Les prompts sont classés automatiquement par date. Filtrez-les par catégorie ou marquez-les en favoris.</p>
+          <div class="docs-feature-list">
+            <div class="docs-feature-row"><div class="docs-feature-icon">🕒</div><div><strong>Tri chronologique</strong><p>Vos prompts les plus récents apparaissent en premier dans la sidebar par défaut.</p></div></div>
+            <div class="docs-feature-row"><div class="docs-feature-icon">🏷️</div><div><strong>Catégories automatiques</strong><p>L'agent détecte le domaine (code, rédaction, analyse…) et étiquette chaque prompt.</p></div></div>
+            <div class="docs-feature-row"><div class="docs-feature-icon">⭐</div><div><strong>Favoris</strong><p>Marquez vos meilleurs prompts en favoris pour les retrouver instantanément.</p></div></div>
+          </div>
+        </div>
+
+        <!-- ─ recherche ─ -->
+        <div class="docs-page" id="page-recherche">
+          <div class="docs-breadcrumb">Bibliothèque → <span>Recherche</span></div>
+          <h3 class="docs-page-title">Recherche</h3>
+          <p class="docs-text">La barre de recherche retrouve n'importe quel prompt par mot-clé, dans son contenu ou son titre.</p>
+          <div class="docs-callout">
+            <span class="docs-callout-icon">🔍</span>
+            <p>La recherche est instantanée et porte sur l'intégralité du contenu de vos prompts, pas seulement leurs titres.</p>
+          </div>
+          <p class="docs-text" style="margin-top:1rem">Utilisez des termes précis : <span class="docs-code">email</span>, <span class="docs-code">python</span>, <span class="docs-code">analyse</span>…</p>
+        </div>
+
+        <!-- ─ categories ─ -->
+        <div class="docs-page" id="page-categories">
+          <div class="docs-breadcrumb">Bibliothèque → <span>Catégories</span></div>
+          <h3 class="docs-page-title">Catégories</h3>
+          <p class="docs-text">L'agent détecte automatiquement la catégorie de chaque prompt au moment de la génération.</p>
+          <div class="docs-tag-grid">
+            <div class="docs-tag-card"><span class="docs-tag">💻 Code</span><p>Développement, débogage, revue de code, architecture.</p></div>
+            <div class="docs-tag-card"><span class="docs-tag">✍️ Rédaction</span><p>Emails, articles, posts, storytelling, copywriting.</p></div>
+            <div class="docs-tag-card"><span class="docs-tag">📊 Analyse</span><p>Données, rapports, synthèses, recherche.</p></div>
+            <div class="docs-tag-card"><span class="docs-tag">🎨 Créatif</span><p>Brainstorming, idéation, design, contenu visuel.</p></div>
+            <div class="docs-tag-card"><span class="docs-tag">📚 Formation</span><p>Explications, tutoriels, résumés, quiz.</p></div>
+            <div class="docs-tag-card"><span class="docs-tag">⚙️ Autre</span><p>Tout ce qui ne rentre pas dans les catégories ci-dessus.</p></div>
+          </div>
+        </div>
+
+        <!-- ─ favoris ─ -->
+        <div class="docs-page" id="page-favoris">
+          <div class="docs-breadcrumb">Bibliothèque → <span>Favoris</span></div>
+          <h3 class="docs-page-title">Favoris</h3>
+          <p class="docs-text">Les favoris donnent accès instantané à vos prompts les plus utilisés sans passer par la recherche.</p>
+          <div class="docs-steps-list">
+            <div class="docs-step-item"><div class="docs-step-num">⭐</div><div class="docs-step-body"><strong>Marquer un favori</strong><p>Cliquez sur l'étoile à côté d'un prompt dans l'historique ou la vue détaillée.</p></div></div>
+            <div class="docs-step-item"><div class="docs-step-num">📌</div><div class="docs-step-body"><strong>Accéder aux favoris</strong><p>Utilisez le filtre "Favoris" en haut de la sidebar pour n'afficher que vos prompts étoilés.</p></div></div>
+          </div>
+        </div>
+
+        <!-- ─ partager prompt ─ -->
+        <div class="docs-page" id="page-partager-prompt">
+          <div class="docs-breadcrumb">Partage → <span>Partager un prompt</span></div>
+          <h3 class="docs-page-title">Partager un prompt</h3>
+          <p class="docs-text">Partagez vos meilleurs prompts avec des collègues ou la communauté en un clic.</p>
+          <div class="docs-steps-list">
+            <div class="docs-step-item"><div class="docs-step-num">1</div><div class="docs-step-body"><strong>Ouvrez le prompt</strong><p>Accédez au prompt depuis votre historique.</p></div></div>
+            <div class="docs-step-item"><div class="docs-step-num">2</div><div class="docs-step-body"><strong>Copiez le prompt</strong><p>Le bouton "Copier" place l'intégralité du prompt dans votre presse-papiers.</p></div></div>
+            <div class="docs-step-item"><div class="docs-step-num">3</div><div class="docs-step-body"><strong>Exportez si besoin</strong><p>Les utilisateurs Pro exportent en .md ou .txt pour partager un fichier formaté.</p></div></div>
+          </div>
+        </div>
+
+        <!-- ─ collaboration ─ -->
+        <div class="docs-page" id="page-collaboration">
+          <div class="docs-breadcrumb">Partage → <span>Collaboration</span></div>
+          <h3 class="docs-page-title">Collaboration</h3>
+          <p class="docs-text">Le plan Team permet à jusqu'à 5 membres de partager un espace commun de prompts.</p>
+          <div class="docs-feature-list">
+            <div class="docs-feature-row"><div class="docs-feature-icon">👥</div><div><strong>Espace partagé</strong><p>Tous les membres de l'équipe voient et utilisent les prompts de l'espace commun.</p></div></div>
+            <div class="docs-feature-row"><div class="docs-feature-icon">🔒</div><div><strong>Prompts privés</strong><p>Chaque membre garde ses prompts personnels visibles uniquement par lui.</p></div></div>
+          </div>
+          <div class="docs-callout">
+            <span class="docs-callout-icon">💼</span>
+            <p>Le plan Team est à $15/mois pour 5 membres. Contactez l'équipe pour des besoins spécifiques.</p>
+          </div>
+        </div>
+
+        <!-- ─ comment amelioration ─ -->
+        <div class="docs-page" id="page-comment-amelioration">
+          <div class="docs-breadcrumb">Optimisation → <span>Comment fonctionne l'amélioration</span></div>
+          <h3 class="docs-page-title">Comment fonctionne l'amélioration des prompts</h3>
+          <p class="docs-text">PromptCraft utilise un pipeline LangGraph multi-agent pour transformer votre idée brute en prompt structuré professionnel.</p>
+          <div class="docs-pipeline">
+            <div class="docs-pipeline-step">
+              <div class="docs-pipeline-icon">🔍</div>
+              <div class="docs-pipeline-label">Analyse d'intention</div>
+              <div class="docs-pipeline-desc">Détecte le domaine, le niveau de complexité et l'objectif principal de votre demande.</div>
+            </div>
+            <div class="docs-pipeline-arrow">→</div>
+            <div class="docs-pipeline-step">
+              <div class="docs-pipeline-icon">🏗️</div>
+              <div class="docs-pipeline-label">Structuration</div>
+              <div class="docs-pipeline-desc">Génère les 5 sections : Rôle, Contexte, Tâche, Format de sortie, Contraintes.</div>
+            </div>
+            <div class="docs-pipeline-arrow">→</div>
+            <div class="docs-pipeline-step">
+              <div class="docs-pipeline-icon">✨</div>
+              <div class="docs-pipeline-label">Raffinement</div>
+              <div class="docs-pipeline-desc">Assemble le prompt final en un texte fluide, naturel et immédiatement utilisable.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─ bonnes pratiques ─ -->
+        <div class="docs-page" id="page-bonnes-pratiques">
+          <div class="docs-breadcrumb">Optimisation → <span>Bonnes pratiques</span></div>
+          <h3 class="docs-page-title">Bonnes pratiques</h3>
+          <p class="docs-text">Pour obtenir les meilleurs prompts, voici ce qui fait la différence dans vos descriptions initiales.</p>
+          <div class="docs-tips">
+            <div class="docs-tip good">
+              <span class="docs-tip-label">✅ À faire</span>
+              <ul>
+                <li>Précisez le contexte : "pour un email de relance client B2B"</li>
+                <li>Indiquez le public cible : "pour un développeur junior"</li>
+                <li>Mentionnez le ton souhaité : "formel mais accessible"</li>
+                <li>Donnez un exemple de format si vous en avez un</li>
+              </ul>
+            </div>
+            <div class="docs-tip bad">
+              <span class="docs-tip-label">❌ À éviter</span>
+              <ul>
+                <li>Les descriptions trop vagues : "écris quelque chose sur le marketing"</li>
+                <li>Les instructions contradictoires dans une même demande</li>
+                <li>Les besoins non définis : "améliore mon texte" sans fournir le texte</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─ developpeurs ─ -->
+        <div class="docs-page" id="page-developpeurs">
+          <div class="docs-breadcrumb">Cas d'utilisation → <span>Développeurs</span></div>
+          <h3 class="docs-page-title">PromptCraft pour les développeurs</h3>
+          <p class="docs-text">Débogage, revue de code, documentation, architecture — les développeurs tirent une valeur immédiate de prompts bien structurés.</p>
+          <div class="docs-use-cases">
+            <div class="docs-use-case"><span class="docs-code">Débogage</span><p>"Analysez ce bug Python et expliquez la cause racine avec des suggestions de correction"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Code review</span><p>"Revoyez ce composant React pour la performance, la lisibilité et les bonnes pratiques"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Architecture</span><p>"Proposez une architecture microservices pour une app e-commerce à fort trafic"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Documentation</span><p>"Générez la documentation technique complète pour cette API REST"</p></div>
+          </div>
+        </div>
+
+        <!-- ─ createurs ─ -->
+        <div class="docs-page" id="page-createurs">
+          <div class="docs-breadcrumb">Cas d'utilisation → <span>Créateurs de contenu</span></div>
+          <h3 class="docs-page-title">PromptCraft pour les créateurs de contenu</h3>
+          <p class="docs-text">Blogs, newsletters, scripts YouTube — PromptCraft structure vos idées créatives pour produire du contenu à votre image.</p>
+          <div class="docs-use-cases">
+            <div class="docs-use-case"><span class="docs-code">Articles de blog</span><p>"Rédige un article SEO sur [sujet] pour une audience tech, ton expert mais accessible"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Scripts vidéo</span><p>"Structure un script YouTube de 8 minutes avec hook, développement et CTA fort"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Newsletters</span><p>"Écris une newsletter hebdo avec insights IA, ton de mentor bienveillant, 500 mots max"</p></div>
+          </div>
+        </div>
+
+        <!-- ─ etudiants ─ -->
+        <div class="docs-page" id="page-etudiants">
+          <div class="docs-breadcrumb">Cas d'utilisation → <span>Étudiants</span></div>
+          <h3 class="docs-page-title">PromptCraft pour les étudiants</h3>
+          <p class="docs-text">Explications claires, synthèses précises, supports d'apprentissage adaptés à votre niveau.</p>
+          <div class="docs-use-cases">
+            <div class="docs-use-case"><span class="docs-code">Révision</span><p>"Crée un quiz de 10 questions sur les réseaux de neurones avec corrections détaillées"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Compréhension</span><p>"Explique la transformée de Fourier à un étudiant en L2 avec des analogies concrètes"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Rédaction académique</span><p>"Structure un plan de mémoire sur l'impact de l'IA sur le droit du travail"</p></div>
+          </div>
+        </div>
+
+        <!-- ─ startups ─ -->
+        <div class="docs-page" id="page-startups">
+          <div class="docs-breadcrumb">Cas d'utilisation → <span>Startups</span></div>
+          <h3 class="docs-page-title">PromptCraft pour les startups</h3>
+          <p class="docs-text">Pitch decks, specs produit, analyses concurrentielles — PromptCraft accélère toutes les tâches stratégiques des fondateurs.</p>
+          <div class="docs-use-cases">
+            <div class="docs-use-case"><span class="docs-code">Pitch</span><p>"Structure un pitch de 3 minutes pour un investisseur seed en fintech : problème-solution-traction"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Product spec</span><p>"Rédige les user stories pour une feature de paiement récurrent en SaaS B2B"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Go-to-market</span><p>"Définis une stratégie GTM pour lancer un outil no-code en Europe francophone"</p></div>
+          </div>
+        </div>
+
+        <!-- ─ marketing ─ -->
+        <div class="docs-page" id="page-marketing">
+          <div class="docs-breadcrumb">Cas d'utilisation → <span>Équipes marketing</span></div>
+          <h3 class="docs-page-title">PromptCraft pour les équipes marketing</h3>
+          <p class="docs-text">De la copie publicitaire aux campagnes email, PromptCraft standardise la qualité des prompts de toute l'équipe.</p>
+          <div class="docs-use-cases">
+            <div class="docs-use-case"><span class="docs-code">Copywriting</span><p>"Écris 5 variantes d'accroches Facebook Ads pour un SaaS RH, angle ROI et gain de temps"</p></div>
+            <div class="docs-use-case"><span class="docs-code">Email marketing</span><p>"Séquence onboarding de 5 emails pour nouveaux inscrits d'un outil de productivité"</p></div>
+            <div class="docs-use-case"><span class="docs-code">SEO content</span><p>"Génère un brief SEO complet pour un article ciblant le mot-clé 'prompt engineering'"</p></div>
+          </div>
+        </div>
+
+      </div><!-- /docs-content -->
+    </div><!-- /docs-layout -->
+  </div>
+</section>
+
+<style>
+/* ── DOCS SECTION ── */
+.docs-section {
+  background: #090704;
+  border-top: 1px solid rgba(240,112,32,.1);
+}
+.docs-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+/* SIDEBAR */
+.docs-sidebar {
+  position: sticky;
+  top: 5.5rem;
+  background: var(--card);
+  border: 1px solid rgba(240,112,32,.14);
+  border-radius: 16px;
+  padding: 1.2rem 0;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240,112,32,.2) transparent;
+}
+.docs-nav-group { margin-bottom: 1rem; }
+.docs-nav-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(138,122,104,.55);
+  padding: .4rem 1.2rem .25rem;
+}
+.docs-nav-item {
+  display: block;
+  font-size: .82rem; color: var(--muted);
+  text-decoration: none;
+  padding: .38rem 1.2rem;
+  border-left: 2px solid transparent;
+  transition: all .16s;
+}
+.docs-nav-item:hover {
+  color: var(--ink);
+  background: rgba(240,112,32,.04);
+}
+.docs-nav-item.active {
+  color: var(--amber);
+  border-left-color: var(--amber);
+  background: rgba(240,112,32,.06);
+}
+
+/* CONTENT AREA */
+.docs-content { min-height: 500px; }
+.docs-page { display: none; }
+.docs-page.active { display: block; }
+
+.docs-breadcrumb {
+  font-family: 'DM Mono', monospace;
+  font-size: .65rem; letter-spacing: .06em;
+  color: rgba(138,122,104,.45); margin-bottom: 1rem;
+}
+.docs-breadcrumb span { color: var(--amber); }
+
+.docs-page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem; font-weight: 900;
+  color: var(--ink); margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(240,112,32,.1);
+  padding-bottom: .8rem;
+}
+.docs-text {
+  font-size: .92rem; color: var(--muted);
+  line-height: 1.75; margin-bottom: 1.2rem;
+}
+
+/* Steps */
+.docs-steps-list { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
+.docs-step-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  background: rgba(240,112,32,.04);
+  border: 1px solid rgba(240,112,32,.1);
+  border-radius: 12px; padding: 1rem 1.2rem;
+}
+.docs-step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), #c45510);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: .72rem; font-weight: 700;
+  color: #0e0b08; flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(240,112,32,.35);
+}
+.docs-step-body strong {
+  display: block; font-size: .88rem; color: var(--ink); margin-bottom: .3rem;
+}
+.docs-step-body p { font-size: .82rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+/* Callouts */
+.docs-callout {
+  display: flex; align-items: flex-start; gap: .8rem;
+  background: rgba(240,112,32,.06);
+  border: 1px solid rgba(240,112,32,.18);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.2rem; margin: 1.2rem 0;
+}
+.docs-callout-warn {
+  background: rgba(245,166,35,.05);
+  border-color: var(--gold); border-left-color: var(--gold);
+}
+.docs-callout-danger {
+  background: rgba(200,60,60,.05);
+  border-color: rgba(200,60,60,.2); border-left-color: #e05050;
+}
+.docs-callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+.docs-callout p { font-size: .85rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+/* Feature list */
+.docs-feature-list { display: flex; flex-direction: column; gap: .8rem; margin: 1.2rem 0; }
+.docs-feature-row {
+  display: flex; align-items: flex-start; gap: .9rem;
+  padding: .8rem; border-radius: 10px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(240,112,32,.08);
+}
+.docs-feature-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .1rem; }
+.docs-feature-row strong { display: block; font-size: .88rem; color: var(--ink); margin-bottom: .2rem; }
+.docs-feature-row p { font-size: .82rem; color: var(--muted); margin: 0; line-height: 1.55; }
+
+/* Tag grid */
+.docs-tag-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1rem; margin: 1.5rem 0;
+}
+.docs-tag-card {
+  background: rgba(240,112,32,.04);
+  border: 1px solid rgba(240,112,32,.12);
+  border-radius: 12px; padding: 1rem;
+}
+.docs-tag {
+  font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .08em;
+  background: rgba(240,112,32,.1); border: 1px solid rgba(240,112,32,.2);
+  color: var(--amber); padding: .25em .7em; border-radius: 100px;
+  display: inline-block; margin-bottom: .6rem;
+}
+.docs-tag-card p { font-size: .82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+
+/* Code inline */
+.docs-code {
+  font-family: 'DM Mono', monospace; font-size: .78rem;
+  background: rgba(240,112,32,.08); border: 1px solid rgba(240,112,32,.15);
+  color: var(--amber); padding: .15em .5em; border-radius: 5px;
+}
+.docs-link { color: var(--amber); text-decoration: underline; text-underline-offset: 2px; }
+.docs-link:hover { color: var(--gold); }
+
+/* Pipeline */
+.docs-pipeline {
+  display: flex; align-items: flex-start; gap: .5rem;
+  margin: 1.5rem 0; flex-wrap: wrap;
+}
+.docs-pipeline-step {
+  flex: 1; min-width: 140px;
+  background: rgba(240,112,32,.05);
+  border: 1px solid rgba(240,112,32,.14);
+  border-radius: 14px; padding: 1.2rem; text-align: center;
+}
+.docs-pipeline-icon { font-size: 1.8rem; margin-bottom: .5rem; }
+.docs-pipeline-label {
+  font-family: 'Playfair Display', serif;
+  font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem;
+}
+.docs-pipeline-desc { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+.docs-pipeline-arrow {
+  align-self: center; color: var(--amber); font-size: 1.2rem;
+  font-weight: 700; flex-shrink: 0; margin-top: -1rem; opacity: .6;
+}
+
+/* Tips */
+.docs-tips { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.docs-tip { border-radius: 12px; padding: 1.2rem; }
+.docs-tip.good { background: rgba(240,112,32,.05); border: 1px solid rgba(240,112,32,.15); }
+.docs-tip.bad { background: rgba(200,60,60,.04); border: 1px solid rgba(200,60,60,.12); }
+.docs-tip-label {
+  display: block; font-family: 'DM Mono', monospace;
+  font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .8rem;
+}
+.docs-tip.good .docs-tip-label { color: var(--amber); }
+.docs-tip.bad .docs-tip-label { color: #e05050; }
+.docs-tip ul { list-style: none; padding: 0; }
+.docs-tip ul li {
+  font-size: .82rem; color: var(--muted); line-height: 1.55;
+  padding: .3rem 0; border-bottom: 1px solid rgba(240,112,32,.06);
+}
+.docs-tip.bad ul li { border-color: rgba(200,60,60,.06); }
+.docs-tip ul li:last-child { border-bottom: none; }
+
+/* Use cases */
+.docs-use-cases { display: flex; flex-direction: column; gap: .8rem; margin: 1.5rem 0; }
+.docs-use-case {
+  background: rgba(255,255,255,.02); border: 1px solid rgba(240,112,32,.09);
+  border-radius: 10px; padding: .9rem 1.1rem;
+  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+}
+.docs-use-case .docs-code { flex-shrink: 0; }
+.docs-use-case p { font-size: .83rem; color: var(--muted); margin: 0; line-height: 1.55; font-style: italic; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .docs-layout { grid-template-columns: 1fr; }
+  .docs-sidebar { position: static; max-height: none; }
+  .docs-pipeline { flex-direction: column; }
+  .docs-pipeline-arrow { transform: rotate(90deg); align-self: center; }
+  .docs-tips { grid-template-columns: 1fr; }
+  .docs-tag-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+(function() {
+  var navItems = document.querySelectorAll('.docs-nav-item');
+  var pages = document.querySelectorAll('.docs-page');
+  navItems.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      var sectionId = this.dataset.section;
+      navItems.forEach(function(n) { n.classList.remove('active'); });
+      this.classList.add('active');
+      pages.forEach(function(p) { p.classList.remove('active'); });
+      var target = document.getElementById('page-' + sectionId);
+      if (target) target.classList.add('active');
+    });
+  });
+})();
+</script>
 
 <!-- ── FOOTER ── -->
 <footer>
