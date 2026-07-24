@@ -713,7 +713,7 @@ footer {
  */
 .author-section {
   background: var(--warm);
-  padding: 0 2rem 5rem;
+  padding: 7rem 2rem 5rem;
   position: relative; z-index: 1;
 }
 
@@ -766,6 +766,7 @@ footer {
 .author-left {
   display: flex; flex-direction: column;
   align-items: center; gap: 1.5rem;
+  justify-content: center;
 }
 .author-avatar-wrap {
   position: relative;
@@ -855,6 +856,7 @@ footer {
 .author-bio {
   font-size: .95rem; color: var(--muted);
   line-height: 1.75; margin-bottom: 1rem;
+  max-width: 640px;
 }
 .author-bio em {
   color: var(--ink); font-style: italic;
