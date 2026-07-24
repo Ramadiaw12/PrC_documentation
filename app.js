@@ -19,3 +19,14 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
   });
 })();
+window.addEventListener("load", () => {
+  const nav = performance.getEntriesByType("navigation")[0];
+
+  if (
+    window.location.pathname.endsWith("/me.html") &&
+    nav &&
+    nav.type === "reload"
+  ) {
+    window.location.replace("index.html");
+  }
+});
