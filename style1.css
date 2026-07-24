@@ -752,6 +752,10 @@ footer {
   gap: 3.5rem;
   box-shadow: var(--shadow-lg), var(--glow);
   position: relative; overflow: hidden;
+  transition: box-shadow .3s ease;
+}
+.author-inner:hover {
+  box-shadow: var(--shadow-lg), var(--glow-lg);
 }
 /* glow interne */
 .author-inner::before {
@@ -760,6 +764,7 @@ footer {
   width: 400px; height: 400px;
   background: radial-gradient(circle, rgba(245,166,35,.06) 0%, transparent 65%);
   border-radius: 50%; pointer-events: none;
+  
 }
 
 /* Avatar  */
@@ -867,6 +872,7 @@ footer {
 /* Liens  */
 .author-links {
   display: flex; flex-wrap: wrap; gap: .75rem;
+  min-height: 2.4rem;
 }
 .author-link {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -894,6 +900,8 @@ footer {
   }
   .author-left { flex-direction: row; flex-wrap: wrap; justify-content: center; }
   .author-badge-row { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .author-right { text-align: center; }
+  .author-links { justify-content: center; }
 }
 
 /* 
